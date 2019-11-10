@@ -213,7 +213,7 @@ void HotelList::Update_hotel()
 		else { cout << "8.Gym : Doesn't have gym " << endl; }
 		if (tmp->value.Available) { cout << "9.Availability now : Available " << endl; }
 		else { cout << "9.Availability : Isn't available now" << endl; }
-		cout << "10.Rooms << endl;
+		cout << "10.Rooms" << endl;
 		cout << endl;
 		cout << "What do you want to modify?" << endl;
 		int choice;
