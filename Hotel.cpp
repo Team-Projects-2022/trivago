@@ -65,7 +65,7 @@ void RoomList::Update_Room()
 			cout << "Reservation duration : " << tmp->value.Reservation_Duration << " Days" << endl;
 		}
 		else { cout << "1.Reserved : " << "No" << endl; }
-		if (tmp->value.Has_TV) { cout << "2.Wifi : " << "Has Wifi" << endl; }
+		if (tmp->value.Has_Wifi) { cout << "2.Wifi : " << "Has Wifi" << endl; }
 		else { cout << "2.Wifi : " << "Doesn't have Wifi" << endl; }
 		if (tmp->value.Has_TV) { cout << "3.Tv : " << "Has Tv" << endl; }
 		else { cout << "3.Tv : " << "Doesn't have Tv" << endl; }
