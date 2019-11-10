@@ -213,7 +213,7 @@ void HotelList::Update_hotel()
 		else { cout << "8.Gym : Doesn't have gym " << endl; }
 		if (tmp->value.Available) { cout << "9.Availability now : Available " << endl; }
 		else { cout << "9.Availability : Isn't available now" << endl; }
-		cout << "10.Number of rooms : " << tmp->value.Number_Of_Rooms << endl;
+		cout << "10.Rooms << endl;
 		cout << endl;
 		cout << "What do you want to modify?" << endl;
 		int choice;
@@ -302,9 +302,7 @@ void HotelList::Update_hotel()
 		}
 		case 10:
 		{
-			int id;
-			cout << "Modify current rooms, Enter room ID : ";
-			cin >> id;
+			cout << "Modify current rooms: ";
 			tmp->value.rooms.Update_Room();
 			break;
 		}
