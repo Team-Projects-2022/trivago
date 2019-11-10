@@ -1,3 +1,4 @@
+//hi iam comment by alaa
 #include "Hotel.h"
 #include<iostream>
 using namespace std;
