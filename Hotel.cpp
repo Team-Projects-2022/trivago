@@ -1,5 +1,4 @@
-//hi iam comment by alaa
-//Decoder !
+//alaa edit
 #include "Hotel.h"
 #include<iostream>
 using namespace std;
@@ -23,9 +22,17 @@ RoomList::RoomList()
 	Number_Of_Rooms = 0;
 }
 
-void RoomList::Add_Room(Room val)
+void RoomList::Add_Room()
 {
-	RoomNode* newnode = new RoomNode(val);
+
+	Room roomtmp;
+	cout << "Enter the new room's data:\n";
+	cout << "Room Number: ";			 cin >> roomtmp.Room_Number;
+	cout << "Is it Singular?: 0/1";		 cin >> roomtmp.Singularity;
+	cout << "Has Wifi?: 0/1";			 cin >> roomtmp.Has_Wifi;
+	cout << "Has TV?: 0/1";		         cin >> roomtmp.Has_TV;
+
+	RoomNode* newnode = new RoomNode(roomtmp);
 	if (start == 0)
 		start = end = newnode;
 	else
@@ -65,7 +72,7 @@ void RoomList::Update_Room()
 			cout << "Reservation duration : " << tmp->value.Reservation_Duration << " Days" << endl;
 		}
 		else { cout << "1.Reserved : " << "No" << endl; }
-		if (tmp->value.Has_Wifi) { cout << "2.Wifi : " << "Has Wifi" << endl; }
+		if (tmp->value.Has_TV) { cout << "2.Wifi : " << "Has Wifi" << endl; }
 		else { cout << "2.Wifi : " << "Doesn't have Wifi" << endl; }
 		if (tmp->value.Has_TV) { cout << "3.Tv : " << "Has Tv" << endl; }
 		else { cout << "3.Tv : " << "Doesn't have Tv" << endl; }
@@ -165,9 +172,28 @@ HotelList::HotelList()
 	Number_Of_Hotels = 0;
 }
 
-void HotelList::Add_hotel(Hotel val)
+void HotelList::Add_hotel()
 {
-	HotelNode* newNode = new HotelNode(val);
+
+	Hotel hoteltmp;
+	cout << "Enter the new hotel's data:\n";
+	cout << "ID: "; cin >> hoteltmp.ID;
+	cout << "Name: "; cin.clear(); cin.sync(); getline(cin, hoteltmp.Name);
+	cout << "Country: "; cin >> hoteltmp.Country;
+	cout << "Location: "; cin >> hoteltmp.Location;
+	cout << "Has Free Meals?: "; cin >> hoteltmp.Free_Meals;
+	cout << "Has Gym?: "; cin >> hoteltmp.Has_Gym;
+	cout << "Has Pool?: "; cin >> hoteltmp.Has_pool;
+	
+	cout << "Number Of Rooms: "; cin >> hoteltmp.Number_Of_Rooms;
+	for (int i = 0; i < hoteltmp.Number_Of_Rooms; i++)
+	{
+		hoteltmp.roomList.Add_Room();
+
+	}
+	cout << "Number Of Stars: "; cin >> hoteltmp.Number_Of_Stars;
+	cout << "Rating: "; cin >> hoteltmp.Rate;
+	HotelNode* newNode = new HotelNode(hoteltmp);
 	if (head == 0)
 		head = tail = newNode;
 	else
@@ -303,7 +329,7 @@ void HotelList::Update_hotel()
 		case 10:
 		{
 			cout << "Modify current rooms: ";
-			tmp->value.rooms.Update_Room();
+			tmp->value.roomList.Update_Room();
 			break;
 		}
 		default:
