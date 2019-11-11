@@ -31,7 +31,7 @@ public:
 	int Number_Of_Rooms;
 public:
 	RoomList();
-	void Add_Room(Room val);
+	void Add_Room();
 	void Update_Room();
 };
 
@@ -52,7 +52,7 @@ struct Hotel
 	bool Has_Gym;
 	bool Has_pool;
 	bool Available;
-	RoomList rooms;
+	RoomList roomList;
 };
 
 
@@ -72,7 +72,7 @@ class HotelList
 	int Number_Of_Hotels;
 public:
 	HotelList();
-	void Add_hotel(Hotel val);
+	void Add_hotel();
 	void Update_hotel();
 };
 
