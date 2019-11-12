@@ -33,6 +33,7 @@ public:
 	RoomList();
 	void Add_Room();
 	void Update_Room();
+	void searchroom(int no);
 };
 
 
@@ -75,6 +76,8 @@ public:
 	void Add_hotel();
 	void Update_hotel();
 	void search(); // in specific query gym ,pool, free_meals ..
+	void filter();
+	void searchhotel();
 };
 
 
