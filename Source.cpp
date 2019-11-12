@@ -23,6 +23,7 @@ int main()
 	adminAdd();
 	/*HotelList x;
 	Hotel h;
+	Hotel r;
 	Room z;
 	h.ID = 1;
 	h.Name = "Hotel transylvania";
@@ -34,6 +35,12 @@ int main()
 	h.Has_pool = true;
 	h.Has_Gym = false;
 	h.Available = true;
+	/////////////////////
+        r.Name = " kempinski";
+	r.Number_Of_Stars = 5;
+	r.ID = 2;
+	r.Has_pool = true;
+	r.Has_Gym = true;
 	/////////////////////////////////// hotel
 	z.Has_TV = true;
 	z.Has_TV = true;
@@ -44,6 +51,7 @@ int main()
 	/////////////////////////////////// room
 	h.rooms.Add_Room(z);
 	x.Add_hotel(h);
+        x.Add_hotel(r);
 	x.Update_hotel();
 	*/
 }
