@@ -429,3 +429,139 @@ void HotelList::search() {
 			}
 		}
 }
+void HotelList::filter(){
+	HotelNode* temp = head;
+	int c;
+	double r;
+	int s;
+	cout << "Enter your choice" << endl;
+	cout << "(1) to search by rate" << endl;
+	cout << "(2) to search by stars" << endl;
+	cout << "Enter your choice : ";
+	cin >> c;
+	if (c == 1){
+		cout << "Enter the rate you require : ";
+		cin >> r;
+
+		while (temp != NULL){
+
+			if (temp->value.Rate == r){
+				cout << temp->value.Name << ' ' << "has" << ' ' << r << ' ' << "rating" << endl;
+				cout << "the hotel ID:" << " " << temp->value.ID << endl;
+				temp = temp->next;
+			}
+			else
+				temp = temp->next;
+		}
+		HotelNode* temp = head;
+		cout << "do you want to dispaly the rest of information (y/n) : ";
+		char choice;
+		cin >> choice;
+		while (temp != 0){
+			if (choice == 'y'){
+				int id;
+				cout << "enter th ID of the hotel you want" << endl;
+				cin >> id;
+				for (int i = 0; i < Number_Of_Hotels; i++){
+					if (temp->value.ID == id){
+						cout << "1.Country : " << temp->value.Country << endl;
+						cout << "2.Location : " << temp->value.Location << endl;
+						if (temp->value.Free_Meals != " ")
+							cout << "3.Free meals : " << "has free meals" << endl;
+						else
+							cout << "3.Free meals : " << "has no free meals" << endl;
+						if (temp->value.Has_pool == true)
+							cout << "4.Pool : " << "has Pool" << endl;
+						else
+							cout << "4.Pool : " << "has no Pool" << endl;
+						if (temp->value.Has_Gym == true)
+							cout << "5.Gym : " << "has Gym" << endl;
+						else
+							cout << "5.Gym : " << "has no Gym" << endl;
+						temp = temp->next;
+						if (temp->value.Available == true)
+							cout << "6.Availability : " << "the hotel is available" << endl;
+						else
+							cout << "6.availability : " << "the hotel is available" << endl;
+					}
+					else
+						temp = temp->next;
+				}
+			}
+			else
+				break;
+				cout << "there is any other hotel you want to know it's information(y/n)" << endl;
+				cin >> choice;
+				if (choice == 'y'){
+					temp = head;
+					continue;
+				}
+				else
+					break;
+			}
+	}
+	
+		
+	
+		if (c == 2){
+			cout << "Enter the number of stars you require : ";
+			cin >> s;
+			while (temp != NULL){
+				if (temp->value.Number_Of_Stars == s){
+					cout << temp->value.Name << ' ' << "has" << ' ' << s << ' ' << "stars" << endl;
+					cout << "the hotel ID:" << temp->value.ID << endl;
+					temp = temp->next;
+				}
+				else
+					temp = temp->next;
+			}
+
+			HotelNode* temp = head;
+			cout << "do you want to dispaly the rest of information (y/n) : ";
+			char choice;
+			cin >> choice;
+			while (temp != 0){
+				if (choice == 'y'){
+					int id;
+					cout << "enter th ID of the hotel you want" << endl;
+					cin >> id;
+					for (int i = 0; i < Number_Of_Hotels; i++){
+						if (temp->value.ID == id){
+							cout << "1.Country : " << temp->value.Country << endl;
+							cout << "2.Location : " << temp->value.Location << endl;
+							if (temp->value.Free_Meals != " ")
+								cout << "3.Free meals : " << "has free meals" << endl;
+							else
+								cout << "3.Free meals : " << "has no free meals" << endl;
+							if (temp->value.Has_pool == true)
+								cout << "4.Pool : " << "has Pool" << endl;
+							else
+								cout << "4.Pool : " << "has no Pool" << endl;
+							if (temp->value.Has_Gym == true)
+								cout << "5.Gym : " << "has Gym" << endl;
+							else
+								cout << "5.Gym : " << "has no Gym" << endl;
+							if (temp->value.Available == true)
+								cout << "6.Availability : " << "the hotel is available" << endl;
+							else
+								cout << "6.availability : " << "the hotel is available" << endl;
+							temp = temp->next;
+						}
+						else
+							temp = temp->next;
+					}
+				}
+
+				else
+					break;
+				cout << "there is any other hotel you want to know it's information(y/n)" << endl;
+				cin >> choice;
+				if (choice == 'y'){
+					temp = head;
+					continue;
+				}
+				else
+					break;
+			}
+		}
+	}
