@@ -74,6 +74,7 @@ public:
 	HotelList();
 	void Add_hotel();
 	void Update_hotel();
+	void search(); // in specific query gym ,pool, free_meals ..
 };
 
 
