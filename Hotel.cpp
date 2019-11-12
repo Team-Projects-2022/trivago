@@ -347,4 +347,85 @@ void HotelList::Update_hotel()
 	}
 
 }
+void HotelList::search() {
+	HotelNode* tmp2 = head;
+	HotelNode* tmp = head;
+	cout << "Enter the Information you want to search about" << endl;
+	cout << "Press (1) to search for Hotels Contains Pool " << endl <<
+		"Press (2) to search for Hotels Contians Gym " << endl <<
+		"Press (3) to search for Hotels Contains Free_meals " << endl <<
+		"Enter your Choice : "; int choice; cin >> choice;
+	
+		while (tmp2 != NULL) {
+			if (choice == 1) {
+				if (tmp2->value.Has_pool == true) {
+					cout << tmp2->value.Name << " Has pool" << endl;
+					cout << " It's ID is " << tmp2->value.ID << endl; 
+					tmp2 = tmp2->next;
+				}
+				else
+					tmp2 = tmp2->next;
 
+			}
+			else if (choice == 2) {
+				if (tmp2->value.Has_Gym == true) {
+					cout << tmp2->value.Name << " Has Gym" << endl;
+					cout << " It's ID is " << tmp2->value.ID << endl;
+					tmp2 = tmp2->next;
+				}
+				else
+					tmp2 = tmp2->next;
+			} 
+			else if (choice == 3) {
+				if (tmp2->value.Free_Meals != " ") {
+					cout << tmp2->value.Name << " Has Free_Meals " << endl;
+					cout << " It's ID is " << tmp2->value.ID << endl;
+					tmp2 = tmp2->next;
+
+				}
+				else
+					tmp2 = tmp2->next;
+
+			}
+		}
+		
+		while (true) {
+			cout << "Enter the ID of the Hotel You'd like to See it's Info : "; int id;
+			cin >> id;
+			while (tmp != NULL) {
+				
+				if (tmp->value.ID == id) {
+					cout << "1.Hotel name :" << tmp->value.Name << endl;
+					cout << "2.Stars : " << tmp->value.Number_Of_Stars << endl;
+					cout << "3.Country : " << tmp->value.Country << endl;
+					cout << "4.Location : " << tmp->value.Location << endl;
+					cout << "5.Free meals : " << tmp->value.Free_Meals << endl;
+					cout << "6.Rating : " << tmp->value.Rate << endl;
+					if (tmp->value.Has_pool) { cout << "7.Pool : Has pool " << endl; }
+					else { cout << "7.Pool : Doesn't have pool " << endl; }
+					if (tmp->value.Has_Gym) { cout << "8.Gym : Has gym " << endl; }
+					else { cout << "8.Gym : Doesn't have gym " << endl; }
+					if (tmp->value.Available) { cout << "9.Availability now : Available " << endl; }
+					else { cout << "9.Availability : Isn't available now" << endl; }
+					cout << "10.Rooms" << endl;
+					cout << endl;
+					tmp = tmp->next;
+				}
+				else {
+					cout << "ID is not valid " << endl;
+					break;
+					tmp = tmp->next;
+				}
+
+				
+			}
+			cout << "If there are any other Hotels You'd Like to see (y/n) : ";char ans;
+			cin >> ans;
+			if (ans == 'n' || ans == 'N')
+				break;
+			else {
+				tmp = head;
+				continue;
+			}
+		}
+}
