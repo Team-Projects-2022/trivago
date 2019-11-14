@@ -42,7 +42,85 @@ void RoomList::Add_Room()
 	}
 	Number_Of_Rooms++;
 }
+void HotelList::Delete_hotel()
+{
+	int ID;
+	char a;
+	cout << "if you want to delete a hotel press y \n";
+	cin >> a;
+	if(a=='y')
+	{
+		cout <<"Enter the hotel's ID\n";
+		cin>>ID;
+		HotelNode* tmp = head;
+		if (head->value.ID == ID)
+		{
+			head = head->next;
+			delete tmp;
+		}
+		else
+		{
+			int count = 0;
+			while (tmp->next->value.ID != ID)
+			{
+				tmp = tmp->next;
+				count++;
+			}
+			HotelNode* del = tmp->next;
+			tmp->next = del->next;
+			delete del;
+			if (count == Number_Of_Hotels - 1)
+				tail = tmp;
 
+		}
+		Number_Of_Hotels--;
+	}
+}
+void HotelList::Display_hotels()
+{
+	int ID;
+	char x,z;
+	HotelNode * tmp = head;
+	for (int i = 0; i < Number_Of_Hotels;i++)
+	{
+		cout << tmp->value.Name <<"	 Number Of Stars:  "<<tmp->value.Number_Of_Stars <<"   Hotel ID:  " <<tmp->value.ID<<endl;
+		tmp = tmp->next;
+	}
+	cout << "If you want to display the information of a specific hotel (y  / n)?\n";
+	cin >> x;
+	if (x == 'y')
+	{
+		while (true)
+		{
+			system("cls");
+			cout << "Enter its ID\n";
+			cin >> ID;
+			HotelNode* tmp = head;
+			while (tmp->value.ID != ID)
+			{
+				tmp = tmp->next;
+			}
+			cout << "1.Hotel name : " << tmp->value.Name << endl;
+			cout << "2.Stars : " << tmp->value.Number_Of_Stars << endl;
+			cout << "3.Country : " << tmp->value.Country << endl;
+			cout << "4.Location : " << tmp->value.Location << endl;
+			cout << "5.Free meals : " << tmp->value.Free_Meals << endl;
+			cout << "6.Rating : " << tmp->value.Rate << endl;
+			if (tmp->value.Has_pool) { cout << "7.Pool : Has pool " << endl; }
+			else { cout << "7.Pool : Doesn't have pool " << endl; }
+			if (tmp->value.Has_Gym) { cout << "8.Gym : Has gym " << endl; }
+			else { cout << "8.Gym : Doesn't have gym " << endl; }
+			if (tmp->value.Available) { cout << "9.Availability now : Available " << endl; }
+			else { cout << "9.Availability : Isn't available now" << endl; }
+			cout << endl;
+			cout << "Do you want to display information about another hotel (y / n)\n";
+			cin >> z;
+			if (z == 'n')
+				break;
+		}
+	}
+	
+}
 void RoomList::Update_Room()
 {
 	int id;
