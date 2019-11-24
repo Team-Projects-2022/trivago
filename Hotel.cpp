@@ -47,34 +47,42 @@ void HotelList::Delete_hotel()
 	char a;
 	cout << "if you want to delete a hotel press y \n";
 	cin >> a;
-	if (a == 'y')
+	if(a=='y')
 	{
-		cout << "Enter the hotel's ID\n";
-		cin >> ID;
 		HotelNode* tmp = head;
+		while(tmp !=NULL)
+		{
+			cout <<tmp ->value.Name<< "    "<<tmp->value.ID<<endl;
+			tmp = tmp->next;
+		}
+		cout <<"Enter the hotel's ID\n";
+		cin>>ID;
+		HotelNode* a = head;
 		if (head->value.ID == ID)
 		{
 			head = head->next;
-			delete tmp;
+			delete a;
 		}
+		
 		else
 		{
 			int count = 0;
-			while (tmp->next->value.ID != ID)
+			while (a->next->value.ID != ID)
 			{
-				tmp = tmp->next;
+				a = a->next;
 				count++;
 			}
-			HotelNode* del = tmp->next;
-			tmp->next = del->next;
+			HotelNode* del = a->next;
+			a->next = del->next;
 			delete del;
 			if (count == Number_Of_Hotels - 1)
-				tail = tmp;
+				tail = a;
 
 		}
 		Number_Of_Hotels--;
 	}
 }
+
 void HotelList::Display_hotels()
 {
 	int ID;
