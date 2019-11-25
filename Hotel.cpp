@@ -806,65 +806,95 @@ void HotelList::filter() {
 	}
 
 }
-void HotelList::searchhotel() {
 
-	HotelNode* temp = head;
-	RoomNode* temp1 = temp->value.roomList.start;
+void HotelList::searchhotel(){
+	
+	HotelNode * temp = head;
+	//RoomNode*  temp1 = temp->value.rooms.start;
+	
 	cout << " the available hotels :" << endl;
-
-	while (temp != 0) {
-		if (temp->value.Available == true) {
+	while (temp!= 0){
+		if (temp->value.Available == true){
 			cout << temp->value.Name << " ID " << temp->value.ID << endl;
 			temp = temp->next;
-
+		
 		}
 		else
+
 		{
 			temp = temp->next;
 
 		}
 
 	}
+	char choice;
+	int idhotel;
+	while (true){
+		temp = head;
+		cout << "if you need the available rooms in specific hotel enter its id :" << endl;
+		cin >> idhotel;
+		for (int i = 0; i < Number_Of_Hotels; i++)
+		{
+			if (temp->value.Available == true){
+				if (temp->value.ID == idhotel){
+					temp->value.rooms.searchroom(temp->value.rooms);
+				}
+
+			}
+
+			temp = temp->next;
+		}
+			cout << "do you want another hotel available rooms : press 'y' if you want 'n' if you don't :" << " ";
+		cin >> choice;
+		if (choice == 'n'){
+			break;
+		}
+
+
+		}
+
+		
+		
+	
 }
-void RoomList::searchroom(int no) {
-	RoomNode* temp = start;
-	for (int i = 0; i < no; i++) {
-		if (temp->value.reserved == false) {
+
+void RoomList::searchroom(RoomList R){
+
+	RoomNode * temp = R.start;
+	//for (int i = 0; i < no-1; i++){
+		while (temp != NULL){
+		if (temp->value.reserved == false){
 			cout << "available rooms in this hotel : " << temp->value.Room_Number << endl;
-			if (temp->value.Singularity == true) {
-				cout << "this room is singular" << " " << "its duration time :" << temp->value.Reservation_Duration << " ";
-				if (temp->value.Has_TV == true) {
+			if (temp->value.Singularity == true){
+				cout << "this room is singular" << " " <<"its duration time :"<< temp->value.Reservation_Duration<<" ";
+				if (temp->value.Has_TV == true){
 					cout << "HAS TV" << " ";
 				}
 				else {
 					cout << "NO TV " << " ";
 				}
-				if (temp->value.Has_Wifi == true) {
+				if (temp->value.Has_Wifi == true){
 					cout << " HAS WIFI" << endl;
 				}
-				else {
+				else{
 					cout << "NO WIFI" << endl;
 				}
-
+				
 			}
-			else {
-				cout << "this room is singular"  " " << "its duration time :" << temp->value.Reservation_Duration << " ";
-				if (temp->value.Has_TV == true) {
+			else{
+				cout << "this room is not singular"  " " << "its duration time :" << temp->value.Reservation_Duration << " ";
+				if (temp->value.Has_TV == true){
 					cout << "HAS TV" << " ";
 				}
 				else {
 					cout << "NO TV " << " ";
 				}
-				if (temp->value.Has_Wifi == true) {
+				if (temp->value.Has_Wifi == true){
 					cout << " HAS WIFI" << endl;
 				}
-				else {
+				else{
 					cout << "NO WIFI" << endl;
-				}
-
-
-
-
+				}	
 			}
 			temp = temp->next;
 
@@ -877,3 +907,5 @@ void RoomList::searchroom(int no) {
 
 	}
 }
+
+	
