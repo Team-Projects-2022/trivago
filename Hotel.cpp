@@ -130,6 +130,77 @@ void HotelList::Display_hotels()
 	}
 
 }
+
+
+void RoomList::Add_Room(Room val)
+
+
+{
+
+
+	RoomNode* newnode = new RoomNode(val);
+
+
+	if (start == 0)
+
+
+		start = end = newnode;
+
+
+	else
+
+
+	{
+
+
+		end->next = newnode;
+
+
+		end = newnode;
+
+
+	}
+
+
+	Number_Of_Rooms++;
+
+
+}
+
+void HotelList::Add_hotel(Hotel val)
+
+
+{
+
+
+	HotelNode* newNode = new HotelNode(val);
+
+
+	if (head == 0)
+
+
+		head = tail = newNode;
+
+
+	else
+
+
+	{
+
+
+		tail->next = newNode;
+
+
+		tail = newNode;
+
+
+	}
+	Number_Of_Hotels++;
+
+}
+
+
+
 void RoomList::Update_Room()
 {
 	int id;
