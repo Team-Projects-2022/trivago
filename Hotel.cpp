@@ -286,9 +286,9 @@ void HotelList::Add_hotel_Admin()
 	char tmpchoice;
 	cout << "Enter the new hotel's data:\n";
 	cout << "ID: "; cin >> hoteltmp.ID;
-	cout << "Name: "; cin.clear(); cin.sync(); getline(cin, hoteltmp.Name);
-	cout << "Country: "; cin >> hoteltmp.Country;
-	cout << "Location: "; cin >> hoteltmp.Location;
+	cout << "Name: "; cin.ignore(); cin.clear(); cin.sync(); getline(cin, hoteltmp.Name);
+	cout << "Country: "; cin.ignore(); cin.clear(); cin.sync(); getline(cin, hoteltmp.Country);
+	cout << "Location: "; cin.ignore(); cin.clear(); cin.sync(); getline(cin, hoteltmp.Location);
 	cout << "Has Free Meals?: y/n "; cin >> tmpchoice; if (tmpchoice == 'y') {
 		cout << "Has Free Breakfast?: y/n "; cin >> tmpchoice; if (tmpchoice == 'y') { hoteltmp.Free_Meals[0] = true; }
 		else { hoteltmp.Free_Meals[0] = false; }
@@ -341,16 +341,19 @@ void HotelList::Update_hotel()
 	{
 		tmp = tmp->next;
 		counter++;
-		if (counter >= Number_Of_Hotels)
+		if (counter > Number_Of_Hotels-1)
 		{
-			cout << "ID not valid Please enter a valid ID " << endl;
 			c = false;
 			break;
 		}
 	}
-	system("cls");
+	if (c == false) 
+	{
+		cout << "ID not valid ! " << endl;
+	}
 	while (c)
 	{
+		system("cls");
 		cout << "1.Hotel name : " << tmp->value.Name << endl;
 		cout << "2.Stars : " << tmp->value.Number_Of_Stars << endl;
 		cout << "3.Country : " << tmp->value.Country << endl;
@@ -377,10 +380,10 @@ void HotelList::Update_hotel()
 		{
 			string x;
 			cout << "Modify the name: ";
-			cin.clear();
-			cin.sync();
-			getline(cin, x);
+			cin.ignore(); cin.clear(); cin.sync();getline(cin, x);
+			
 			tmp->value.Name = x;
+			 
 			break;
 		}
 		case 2:
@@ -395,7 +398,10 @@ void HotelList::Update_hotel()
 		{
 			string x;
 			cout << "Modify the country: ";
-			cin >> x;
+			cin.ignore();
+			cin.clear();
+			cin.sync();
+			getline(cin, x);
 			tmp->value.Country = x;
 			break;
 		}
@@ -403,7 +409,10 @@ void HotelList::Update_hotel()
 		{
 			string x;
 			cout << "Modify the location : ";
-			cin >> x;
+			cin.ignore();
+			cin.clear();
+			cin.sync();
+			getline(cin, x);
 			tmp->value.Location = x;
 			break;
 		}
