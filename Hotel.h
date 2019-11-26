@@ -31,11 +31,9 @@ public:
 	int Number_Of_Rooms;
 public:
 	RoomList();
-	void Add_Room(Room val);
-	void searchroom( RoomList R);
 	void Add_Room_Admin();
 	void Update_Room();
-	
+	void searchroom(RoomList R);
 };
 
 
@@ -71,7 +69,7 @@ public:
 class HotelList
 {
 
-public:		
+public:
 	HotelNode* tail;
 
 	int Number_Of_Hotels;
@@ -79,12 +77,10 @@ public:
 	HotelList();
 	void Add_hotel_Admin();
 	void Update_hotel();
-	void Add_hotel(Hotel val);
 	void Delete_hotel();
 	void Display_hotels();
 	void search(); // in specific query gym ,pool, free_meals ..
 	void filter();
 	void searchhotel();
+	
 };
-
-
