@@ -98,7 +98,7 @@ void HotelList::filter() {
 
 	if (c == 1) {
 
-		cout << "Enter the rate you want tot search for : ";
+		cout << "Enter the rate you want to search for : ";
 		cin >> r;
 
 		cout << endl;
