@@ -56,7 +56,7 @@ public:
 	void Update_hotel();
 	//void Delete_hotel();
 	//void Display_hotels();
-	//void search(); // in specific query gym ,pool, free_meals ..
+	void search(string); // in specific query gym ,pool, free_meals ..
 	void filter();
 	//void searchhotel();
 	void reserve(int);
