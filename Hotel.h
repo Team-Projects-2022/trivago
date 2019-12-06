@@ -41,6 +41,7 @@ struct Hotel
 	bool Has_pool;
 	bool Available;
 	RoomList roomList;
+        vector<string> v;
 };
 
 class HotelList
@@ -56,6 +57,7 @@ public:
 	void Update_hotel();
 	//void Delete_hotel();
 	//void Display_hotels();
+	void Addcomments(int);
 	void search(string); // in specific query gym ,pool, free_meals ..
 	void filter();
 	void searchhotel(string c,int a);
