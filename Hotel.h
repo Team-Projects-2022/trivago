@@ -23,7 +23,7 @@ public:
 	unordered_map<int, Room> Rooms;
 	void Add_Room_Admin();
 	void Update_Room();
-	//void searchroom(RoomList R);
+	void searchroom();
 };
 
 struct Hotel
@@ -58,7 +58,7 @@ public:
 	//void Display_hotels();
 	void search(string); // in specific query gym ,pool, free_meals ..
 	void filter();
-	//void searchhotel();
+	void searchhotel(string c,int a);
 	void reserve(int);
 };
 
