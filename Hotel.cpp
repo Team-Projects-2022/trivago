@@ -108,7 +108,7 @@ void HotelList::filter() {
 			if (it->second.Rate >= r) {
 				num++;
 
-				cout << it->second.Rate << ' ' << "has" << ' ' << it->second.Rate << ' ' << "rating" << endl;
+				cout << it->second.Name << ' ' << "has" << ' ' << it->second.Rate << ' ' << "rating" << endl;
 
 				cout << "the hotel ID:" << " " << it->second.ID << endl;
 
