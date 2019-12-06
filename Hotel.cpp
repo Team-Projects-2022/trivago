@@ -820,6 +820,9 @@ void HotelList::search(string c) {
 		}
 
 	}
+	cout << "IF you want to Add Comments PLease Enter the ID of the Hotel you want : ";
+	int tmpID; cin >> tmpID;
+	Addcomments(tmpID);
 }
 void HotelList::searchhotel(string c,int a) {
 	unordered_map<int, Hotel>::iterator it;
@@ -1016,3 +1019,11 @@ void RoomList::searchroom() {
 			}
 
 		}
+void HotelList::Addcomments(int id){
+	string comm;
+	cout << "Do You want to Add Comments?(y/n) ";char ans;cin >> ans;
+	if (ans == 'y')
+	cout << "Your Comments : ";cin >> comm;
+	IDmap[id].v.push_back(comm);
+	
+}
