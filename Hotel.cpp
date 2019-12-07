@@ -704,28 +704,29 @@ void HotelList::reserve(int id)
 }
 void HotelList::search(string c) {
 	
+	
 	cout << "Enter the Information you want to search about" << endl;
 	cout << "Press (1) to search for Hotels Contains Pool " << endl <<
 		"Press (2) to search for Hotels Contians Gym. " << endl <<
-		"Press (3) to search for Hotels Contains Free_meals. "<< endl <<
+		"Press (3) to search for Hotels Contains Free_meals. " << endl <<
 		"Press (4) to Return to Menu " << endl <<
 		"Enter your Choice : "; int choice; cin >> choice;
 
 	system("cls");
 	unordered_map<int, Hotel >::iterator it;
-	bool p = true;
+	bool p =false;
 
 	for (it = IDmap.begin(); it != IDmap.end(); it++) {
-		
+
 		if (choice == 1) {
 			if (it->second.Has_pool == true && it->second.Country == c) {
 				cout << it->second.Name << " Has Pool " << endl;
 				cout << " It's ID is " << it->second.ID << endl;
 				p = true;
-				
+
 			}
 		}
-		else if (choice == 2 ) {
+		else if (choice == 2) {
 
 			if (it->second.Has_Gym == true && it->second.Country == c) {
 				cout << it->second.Name << " Has Gym" << endl;
@@ -734,10 +735,10 @@ void HotelList::search(string c) {
 			}
 		}
 
-		else if (choice == 3 ) {
+		else if (choice == 3) {
 
 			if (it->second.Free_Meals[0] == true || it->second.Free_Meals[1] == true) {
-				if ( it->second.Country == c) {
+				if (it->second.Country == c) {
 
 					cout << it->second.Name << " Has Free_Meals " << endl;
 
@@ -750,24 +751,25 @@ void HotelList::search(string c) {
 			p = false;
 			break;
 		}
-		else {
+		else { 
 			cout << "There is no Hotels in this Area with this Query :( " << endl;
 			p = false;
 			break;
 
 		}
 	}
-    if(p)
-	{
-		cout << "Do You Want To See Hotel Info ? (y/n) : "; char x; cin >> x;
-	
-		while (true) {
+	int id;
+
+	while (true) {
+		if (p)
+		{
+			cout << "Do You Want To See Hotel Info ? (y/n) : "; char x; cin >> x;
 
 			if (x == 'y') {
 
 				system("cls");
 
-				cout << "Enter the ID of the Hotel You'd like to See it's Info : "; int id;
+				cout << "Enter the ID of the Hotel You'd like to See it's Info : ";
 				cin >> id;
 				if (IDmap.find(id) == IDmap.end())
 					cout << "ID Not Valid " << endl;
@@ -799,30 +801,46 @@ void HotelList::search(string c) {
 					cout << endl;
 
 				}
+			
+				cout << "If there are any other Hotels You'd Like to see (y/n) : "; char ANS;
+				cin >> ANS;
+				if (ANS == 'n' || ANS == 'N')
+					break; 
+				else {
 
+					system("cls");
+					continue;
+
+				}
 			}
-			cout << "If there are any other Hotels You'd Like to see (y/n) : "; char ans;
-
-			cin >> ans;
-
-			if (ans == 'n' || ans == 'N')
-
-				break;
-
-			else {
-
-				system("cls");
-				continue;
-
-			}
-		
-
+			else
+				break; 
+		}
+		else {
+			cout << "There is no Hotels in this Area with this Query :( " << endl;
+			break;
 		}
 
 	}
-	cout << "IF you want to Add Comments PLease Enter the ID of the Hotel you want : ";
-	int tmpID; cin >> tmpID;
-	Addcomments(tmpID);
+	for (int i = 0;i < 1;i++) {
+		cout << "Do You want to Add Comments?(y/n) ";char ans;cin >> ans;
+		if (ans == 'y') {
+			cout << "Enter the ID of the Hotel you want ";
+			int tmpID; cin >> tmpID;
+			Addcomments(tmpID);
+		}
+		  
+		cout << "Do You want to Rate A Hotel ?(y/n) ";char ans1;cin >> ans1;
+		if (ans1 == 'y') {
+			cout << "Enter the ID of the Hotel you want to Rate :";
+			int tmpID2; cin >> tmpID2;
+			rating(tmpID2);
+		}
+		
+		// cout << "Would you like to Reserve(y/n) : "; char ch;cin >> ch;
+		   //if (ch == 'y')
+			  //reserve(tmpID);
+	}
 }
 void HotelList::searchhotel(string c,int a) {
 	unordered_map<int, Hotel>::iterator it;
@@ -1021,9 +1039,13 @@ void RoomList::searchroom() {
 		}
 void HotelList::Addcomments(int id){
 	string comm;
-	cout << "Do You want to Add Comments?(y/n) ";char ans;cin >> ans;
-	if (ans == 'y')
 	cout << "Your Comments : ";cin >> comm;
-	IDmap[id].v.push_back(comm);
+	IDmap[id].vcomments.push_back(comm);
 	
+}
+void HotelList::rating(int id) {
+	int rate;
+   	  cout << "Please Enter Your Rating From 1 to 5 : "; cin >> rate;
+	  IDmap[id].vrating.push_back(rate);
+	  
 }
