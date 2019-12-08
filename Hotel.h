@@ -41,9 +41,9 @@ struct Hotel
 	bool Has_pool;
 	bool Available;
 	RoomList roomList;
-       	vector<string> vcomments;
+	vector<string> vcomments;
 	vector<int> vrating;
-	
+
 };
 
 class HotelList
@@ -53,17 +53,15 @@ public:
 	unordered_map<int, Hotel> IDmap;
 
 public:
-	HotelList();
 	void show();
 	void Add_hotel_Admin();
 	void Update_hotel();
-	//void Delete_hotel();
-	//void Display_hotels();
+	void Delete_hotel();
+	void Display_hotels();
 	void Addcomments(int);
-        void rating(int);
+	void rating(int);
 	void search(string); // in specific query gym ,pool, free_meals ..
-	void filter();
-	void searchhotel(string c,int a);
+	void filter(string);
+	void searchhotel(string c, int a);
 	void reserve(int);
 };
-
