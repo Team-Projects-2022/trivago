@@ -10,10 +10,10 @@ using namespace std;
 
 int main()
 {
-	
+
 	HotelList hotels;
 	Setup(hotels);
-    string n = GetCountry();
+	
 
 	bool c = true;
 	while (c)
@@ -75,7 +75,7 @@ int main()
 				}
 				case 3:
 				{
-					//hotels.Delete_hotel();
+					hotels.Delete_hotel();
 					system("pause");
 					system("cls");
 					break;
@@ -94,12 +94,14 @@ int main()
 					cin >> y;
 					if (y == 1)
 					{
-						//hotels.searchhotel();
+						string y = GetCountry();
+						hotels.searchhotel(y ,admin);
 						system("pause");
 						system("cls");
 					}
 					else
 					{
+						string n = GetCountry();
 						hotels.search(n);
 						system("pause");
 						system("cls");
@@ -145,20 +147,23 @@ int main()
 				{
 				case 1:
 				{
-					//hotels.searchhotel();
+					string y = GetCountry();
+					hotels.searchhotel(y, admin);
 					system("pause");
 					system("cls");
 					break;
 				}
 				case 2:
 				{
-					hotels.filter();
+					string y = GetCountry();
+					hotels.filter(y);
 					system("pause");
 					system("cls");
 					break;
 				}
 				case 3:
 				{
+					string n = GetCountry();
 					hotels.search(n);
 					system("pause");
 					system("cls");
