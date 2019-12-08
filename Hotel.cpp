@@ -23,14 +23,13 @@ void HotelList::Add_hotel_Admin()
 	}
 
 	cout << "Number Of Stars: "; cin >> hoteltmp.Number_Of_Stars;
-	cout << "Rating: "; cin >> hoteltmp.Rate;
+	hoteltmp.Rate = 5.0;
 
-	cout << "Number Of Rooms: "; cin >> hoteltmp.Number_Of_Rooms;
 	cout << "Has Gym?:  y/n "; cin >> tmpchoice; if (tmpchoice == 'y') { hoteltmp.Has_Gym = true; }
 	else { hoteltmp.Has_Gym = false; }
 	cout << "Has Pool?:  y/n "; cin >> tmpchoice;  if (tmpchoice == 'y') { hoteltmp.Has_pool = true; }
 	else { hoteltmp.Has_pool = false; }
-
+	cout << "Number Of Rooms: "; cin >> hoteltmp.Number_Of_Rooms;
 	system("cls");
 	for (int i = 0; i < hoteltmp.Number_Of_Rooms; i++)
 	{
