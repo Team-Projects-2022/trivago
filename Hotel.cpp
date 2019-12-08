@@ -621,9 +621,10 @@ void HotelList::reserve(int id)
 	bool check = false;
 	for (unordered_map<int, Room>::iterator it = IDmap[id].roomList.Rooms.begin(); it != IDmap[id].roomList.Rooms.end(); it++)
 	{
-		for (int i = arr[0][1]-1; i < arr[1][1]-1; i++)
+		check=false;
+		for (int i = arr[0][1]-1; i <= arr[1][1]-1; i++)
 		{
-			for (int j = arr[0][0]-1; j < arr[1][0]-1; j++)
+			for (int j = arr[0][0]-1; j <= arr[1][0]-1; j++)
 			{
 				if (it->second.Calender[i][j] == true)
 				{
@@ -655,9 +656,9 @@ void HotelList::reserve(int id)
 	{
 		int no;
 		cout << "Enter the room number you would like to reserve : "; cin >> no;
-		for (int i = arr[0][1]-1; i < arr[1][1]-1; i++)
+		for (int i = arr[0][1]-1; i <= arr[1][1]-1; i++)
 		{
-			for (int j = arr[0][0]-1; j < arr[1][0]-1; j++)
+			for (int j = arr[0][0]-1; j <= arr[1][0]-1; j++)
 			{
 				IDmap[id].roomList.Rooms[no].Calender[i][j] = true;
 			}
@@ -968,11 +969,12 @@ void RoomList::searchroom() {
 	cout << "available rooms in this hotel : " << endl;
 
 	while (it != Rooms.end()) {
-		for (int i = arr[0][1]-1; i < arr[1][1]-1; i++)
+		check=false;
+		for (int i = arr[0][1]-1; i <= arr[1][1]-1; i++)
 
 		{
 
-			for (int j = arr[0][0]-1; j < arr[1][0]-1; j++)
+			for (int j = arr[0][0]-1; j <= arr[1][0]-1; j++)
 
 			{
 
