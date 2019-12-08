@@ -32,8 +32,6 @@ void Setup(HotelList& h)
 	val.Number_Of_Stars = 2;
 	val.Rate = 5;
 
-
-
 	Room rval;
 
 	rval.Has_TV = true;
@@ -41,6 +39,13 @@ void Setup(HotelList& h)
 	rval.available = true;
 	rval.Room_Number = 1;
 	rval.Singularity = true;
+	for (int i = 0; i < 12; i++)
+	{
+		for (int j = 0; j < 30; j++)
+		{
+			rval.Calender[i][j] = false;
+		}
+	}
 
 	val.roomList.Rooms.insert(make_pair(rval.Room_Number, rval));
 
@@ -52,6 +57,13 @@ void Setup(HotelList& h)
 	rval2.available = true;
 	rval2.Room_Number = 2;
 	rval2.Singularity = false;
+	for (int i = 0; i < 12; i++)
+	{
+		for (int j = 0; j < 30; j++)
+		{
+			rval2.Calender[i][j] = false;
+		}
+	}
 	val.roomList.Rooms.insert(make_pair(rval2.Room_Number, rval2));
 
 	h.IDmap.insert(make_pair(val.ID, val));
@@ -141,8 +153,8 @@ void Setup(HotelList& h)
 string GetCountry()
 {
 	string country;
-	cout << " enter the country you want to search in : ";
-	cin.ignore(); cin.clear(); cin.sync(); getline(cin, country);
+	cout << "Enter the country you want to search in : ";
+	cin.ignore(); cin.clear(); cin.sync();getline(cin, country);
 
 	return country;
 }
@@ -150,8 +162,8 @@ string GetCountry()
 int Login(userInfo &U)
 {
 	cout << "Login :" << endl << endl;
-	cout << "1. Sign Up " << endl;
-	cout << "2. Sign in" << endl << endl;
+	cout << "1. Singn Up " << endl;
+	cout << "2. Sign in" << endl<< endl;
 	int ch;
 	cout << "Enter your choice :";
 	cin >> ch;
@@ -160,60 +172,60 @@ int Login(userInfo &U)
 	{
 	case 1:
 	{
-			  U.ad = false;
-			  cout << "Name : ";
-			  cin.ignore(); cin.clear(); cin.sync(); getline(cin, U.name);
-			  cout << endl;
-			  cout << "country : ";
-			  cin.ignore(); cin.clear(); cin.sync(); getline(cin, U.country);
-			  cout << endl;
-			  cout << "E-mail : ";
-			  cin.ignore(); cin.clear(); cin.sync(); getline(cin, U.account);
-			  cout << endl;
-			  cout << "Password : ";
-			  cin.ignore(); cin.clear(); cin.sync(); getline(cin, U.password);
-			  cout << endl;
-			  system("cls");
-			  cout << "Signed Up successfully" << endl;
-			  return 2;
+		U.ad = false;
+		cout << "Name : ";
+		cin.ignore(); cin.clear(); cin.sync();getline(cin, U.name);
+		cout << endl;
+		cout << "country : ";
+		cin.ignore(); cin.clear(); cin.sync();getline(cin, U.country);
+		cout << endl;
+		cout << "E-mail : ";
+		cin.ignore(); cin.clear(); cin.sync();getline(cin, U.account);
+		cout << endl;
+		cout << "Password : ";
+		cin.ignore(); cin.clear(); cin.sync();getline(cin, U.password);
+		cout << endl;
+		system("cls");
+		cout << "Signed Up successfully" << endl;
+		return 2;
 	}
 	case 2:
 	{
-			  cout << "As user or admin ? (1/2) :";
-			  int y;
-			  cin >> y;
-			  if (y == 1)
-			  {
-				  U.ad = false;
-				  string username;
-				  cout << "Enter user name : ";
-				  cin.ignore(); cin.clear(); cin.sync(); getline(cin, username);
-				  U.name = username;
-				  string passwordx;
-				  cout << "Enter password : " << endl;
-				  cin.ignore(); cin.clear(); cin.sync(); getline(cin, passwordx);
-				  U.password = passwordx;
-				  return 2;
-			  }
-			  else
-			  {
-				  cout << "Enter Admin's passcode :";
-				  string passcode;
-				  cin.ignore(); cin.clear(); cin.sync(); getline(cin, passcode);
-				  if (passcode == "Admin")
-				  {
-					  return 1;
-				  }
-				  else
-				  {
-					  cout << "Not valid Admin" << endl;
-					  return 3;
-				  }
-			  }
+		cout << "As user or admin ? (1/2) :";
+		int y;
+		cin >> y;
+		if (y == 1)
+		{
+			U.ad = false;
+			string username;
+			cout << "Enter user name : ";
+			cin.ignore(); cin.clear(); cin.sync();getline(cin, username);
+			U.name = username;
+			string passwordx;
+			cout << "Enter password : ";
+			cin.ignore(); cin.clear(); cin.sync();getline(cin, passwordx);
+			U.password = passwordx;
+			return 2;
+		}
+		else
+		{
+			cout << "Enter Admin's passcode :";
+			string passcode;
+			cin.ignore(); cin.clear(); cin.sync();getline(cin, passcode);
+			if (passcode == "Admin")
+			{
+				return 1;
+			}
+			else
+			{
+				cout << "Not valid Admin" << endl;
+				return 3;
+			}
+		}
 	}
 	default:
 	{
-			   return 3;
+		return 3;
 	}
 	}
 }
