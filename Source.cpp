@@ -13,8 +13,6 @@ int main()
 
 	HotelList hotels;
 	Setup(hotels);
-	
-
 	bool c = true;
 	while (c)
 	{
@@ -95,14 +93,14 @@ int main()
 					if (y == 1)
 					{
 						string y = GetCountry();
-						hotels.searchhotel(y ,admin);
+						hotels.searchhotel(y, admin);
 						system("pause");
 						system("cls");
 					}
 					else
 					{
 						string n = GetCountry();
-						hotels.search(n);
+						hotels.search(n, admin );
 						system("pause");
 						system("cls");
 					}
@@ -164,7 +162,7 @@ int main()
 				case 3:
 				{
 					string n = GetCountry();
-					hotels.search(n);
+					hotels.search(n,admin);
 					system("pause");
 					system("cls");
 					break;
