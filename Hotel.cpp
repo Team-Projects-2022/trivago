@@ -65,7 +65,7 @@ void RoomList::Add_Room_Admin()
 
 }
 
-void HotelList::filter(string k) {
+void HotelList::filter(string k, int a) {
 
 	unordered_map<int, Hotel >::iterator it;
 	it = IDmap.begin();
@@ -121,67 +121,69 @@ void HotelList::filter(string k) {
 			while (true)
 			{
 
-				int count = 0;
-
-
 				if (choice == 'y') {
 					system("cls");
-
 					int id;
 
 					cout << "enter th ID of the hotel you want" << endl;
 
 					cin >> id;
+					if (IDmap.find(id) == IDmap.end()){
+						cout << "ID Not Valid " << endl;
+						cout << "Please enter th ID again";
+						continue;
+					}
 
+					else{
+						cout << "1.Country : " << IDmap[id].Country << endl;
 
-					cout << "1.Country : " << IDmap[id].Country << endl;
+						cout << "2.Location : " << IDmap[id].Location << endl;
 
-					cout << "2.Location : " << IDmap[id].Location << endl;
+						if (IDmap[id].Free_Meals[0] != false || IDmap[id].Free_Meals[1] != false)
 
-					if (IDmap[id].Free_Meals[0] != false || IDmap[id].Free_Meals[1] != false)
+							cout << "3.Free meals : " << "has free meals" << endl;
 
-						cout << "3.Free meals : " << "has free meals" << endl;
+						else
 
-					else
+							cout << "3.Free meals : " << "has no free meals" << endl;
 
-						cout << "3.Free meals : " << "has no free meals" << endl;
+						if (IDmap[id].Has_pool == true)
 
-					if (IDmap[id].Has_pool == true)
+							cout << "4.Pool : " << "has Pool" << endl;
 
-						cout << "4.Pool : " << "has Pool" << endl;
+						else
 
-					else
+							cout << "4.Pool : " << "has no Pool" << endl;
 
-						cout << "4.Pool : " << "has no Pool" << endl;
+						if (IDmap[id].Has_Gym == true)
 
-					if (IDmap[id].Has_Gym == true)
+							cout << "5.Gym : " << "has Gym" << endl;
 
-						cout << "5.Gym : " << "has Gym" << endl;
+						else
 
-					else
+							cout << "5.Gym : " << "has no Gym" << endl;
 
-						cout << "5.Gym : " << "has no Gym" << endl;
+						if (IDmap[id].Available == true)
 
-					if (IDmap[id].Available == true)
+							cout << "6.Availability : " << "the hotel is available" << endl;
 
-						cout << "6.Availability : " << "the hotel is available" << endl;
+						else
 
-					else
+							cout << "6.availability : " << "the hotel is available" << endl;
 
-						cout << "6.availability : " << "the hotel is available" << endl;
+						if (a == 2){
+							cout << "Do You want to Add Comments?(y/n) "; char ans; cin >> ans;
+							if (ans == 'y') {
+								Addcomments(id);
+							}
 
-				}
-
-				else
-				{
-					count++;
-					if (count > IDmap.size() - 1)
-					{
-						cout << "ID not valid !" << endl;
-						return;
+							cout << "Do You want to Rate A Hotel ?(y/n) "; char ans1; cin >> ans1;
+							if (ans1 == 'y') {
+								rating(id);
+							}
+						}
 					}
 				}
-
 				cout << "Is there any other hotel you want to know it's information?(y/n) ";
 
 				cin >> choice;
@@ -235,7 +237,6 @@ void HotelList::filter(string k) {
 			cin >> choice;
 
 			while (true) {
-				int count = 0;
 				if (choice == 'y') {
 
 					system("cls");
@@ -245,53 +246,61 @@ void HotelList::filter(string k) {
 					cout << "enter th ID of the hotel you want" << endl;
 
 					cin >> id;
-					cout << "1.Country : " << IDmap[id].Country << endl;
+					if (IDmap.find(id) == IDmap.end()){
+						cout << "ID Not Valid " << endl;
+						cout << "Please enter th ID again";
+						continue;
+					}
+					else{
+						cout << "1.Country : " << IDmap[id].Country << endl;
 
-					cout << "2.Location : " << IDmap[id].Location << endl;
+						cout << "2.Location : " << IDmap[id].Location << endl;
 
-					if (IDmap[id].Free_Meals[0] != false || IDmap[id].Free_Meals[1] != false)
+						if (IDmap[id].Free_Meals[0] != false || IDmap[id].Free_Meals[1] != false)
 
-						cout << "3.Free meals : " << "has free meals" << endl;
+							cout << "3.Free meals : " << "has free meals" << endl;
 
-					else
+						else
 
-						cout << "3.Free meals : " << "has no free meals" << endl;
+							cout << "3.Free meals : " << "has no free meals" << endl;
 
-					if (IDmap[id].Has_pool == true)
+						if (IDmap[id].Has_pool == true)
 
-						cout << "4.Pool : " << "has Pool" << endl;
+							cout << "4.Pool : " << "has Pool" << endl;
 
-					else
+						else
 
-						cout << "4.Pool : " << "has no Pool" << endl;
+							cout << "4.Pool : " << "has no Pool" << endl;
 
-					if (IDmap[id].Has_Gym == true)
+						if (IDmap[id].Has_Gym == true)
 
-						cout << "5.Gym : " << "has Gym" << endl;
+							cout << "5.Gym : " << "has Gym" << endl;
 
-					else
+						else
 
-						cout << "5.Gym : " << "has no Gym" << endl;
+							cout << "5.Gym : " << "has no Gym" << endl;
 
-					if (IDmap[id].Available == true)
+						if (IDmap[id].Available == true)
 
-						cout << "6.Availability : " << "the hotel is available" << endl;
+							cout << "6.Availability : " << "the hotel is available" << endl;
 
-					else
+						else
 
-						cout << "6.availability : " << "the hotel is available" << endl;
+							cout << "6.availability : " << "the hotel is available" << endl;
+						if (a == 2){
+							cout << "Do You want to Add Comments?(y/n) "; char ans; cin >> ans;
+							if (ans == 'y') {
+								Addcomments(id);
+							}
 
-				}
-
-				else
-				{
-					count++;
-					if (count > IDmap.size() - 1)
-					{
-						cout << "ID not valid !" << endl;
-						return;
+							cout << "Do You want to Rate A Hotel ?(y/n) "; char ans1; cin >> ans1;
+							if (ans1 == 'y') {
+								rating(id);
+							}
+						}
 					}
 				}
+
 				cout << "there is any other hotel you want to know it's information(y/n)" << endl;
 
 				cin >> choice;
@@ -308,13 +317,6 @@ void HotelList::filter(string k) {
 
 		}
 	}
-	cout << "IF you want to Add Comments PLease Enter the ID of the Hotel you want : ";
-	int tmpID; cin >> tmpID;
-	Addcomments(tmpID);
-	cout << endl;
-	cout << "IF you want to Add rating PLease Enter the ID of the Hotel you want : ";
-	int tmpr; cin >> tmpr;
-	rating(tmpr);
 
 }
 
