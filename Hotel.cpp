@@ -836,226 +836,433 @@ void HotelList::search(string c , int a ) {
 		cout << "There is no Hotels in this Area with this Query :( " << endl;
 }
 
+void HotelList::searchhotel(string c, int a) {
 
-void HotelList::searchhotel(string c,int a) {
 	unordered_map<int, Hotel>::iterator it;
-	int counth=0;
+
+	int counth = 0;
+
 	string AD;
+
 	cout << " Available Hotels in this country ::  " << endl;
+
 	for (it = IDmap.begin(); it != IDmap.end(); it++){
+
 		if (it->second.Available && it->second.Country == c) {
-			cout << it->second.Name << "  ";
+
+			cout << it->second.Name << "  " << it->second.ID << endl;
+
 			counth++;
+
 		}
+
 	}
+
 	cout << endl;
 
+
+
 	if (counth == 0){
+
 		cout << " No Available Hotels in this country: " << endl;
-		if (a == 2){
+
+		if (a == 1){
+
 			cout << " do you want to add new hotels to this country ? (yes /no) " << endl;
+
 			cin >> AD;
+
 			if (AD == "yes"){
+
 				Add_hotel_Admin();
+
 			}
+
 		}
-		
+
+
+
 	}
-	
+
+
+
+
 
 	char choice;
 
+
+
 	int idhotel;
+
 	while (true)
 
+
+
 	{
+
 		if (counth == 0){
+
 			break;
+
 		}
+
+
 
 		cout << "Do you want to display a specific hotel's available rooms ?(y/n)" << endl;
 
-		char a;
 
-		cin >> a;
 
-		if (a == 'n')
+		char b;
+
+
+
+		cin >> b;
+
+
+
+		if (b == 'n')
+
+
 
 		{
 
+
+
 			break;
 
+
+
 		}
+
+
 
 		else
 
+
+
 		{
+
+
 
 			system("cls");
 
+
+
 			cout << "Enter it's ID : ";
+
+
 
 			cin >> idhotel;
 
+
+
 			if (IDmap.find(idhotel) == IDmap.end()){
+
 				cout << "unvalid id" << endl;
+
 			}
+
 			else
+
 			{
 
+
+				
 				IDmap[idhotel].roomList.searchroom();
-				if (a == 1){
+
+				if (a == 2){
+
 					char ans;
+
 					char ans1;
+
 					char ans2;
+
 					cout << " do you want to add comments? (y/n) " << endl;
+
 					cin >> ans;
+
 					if (ans == 'y'){
-						addcomments(idhotel);
+
+						Addcomments(idhotel);
+
 					}
+
 					cout << " do you want to rate ?(y/n) <<" << endl;
+
 					cin >> ans1;
+
 					if (ans1 == 'y')
+
 					{
+
 						rating(idhotel);
+
 					}
+
 					cout << " Do you want to reserve? (y/n) " << " ";
+
 					cin >> ans2;
+
 					if (ans2 == 'y')
+
 						reserve(idhotel);
+
 				}
+
 			}
+
 		}
+
+
 
 		cout << "Do you want to display another hotel's info(y/n) :" << " ";
 
+
+
 		cin >> choice;
+
+
 
 		if (choice == 'n') {
 
+
+
 			break;
 
+
+
 		}
+
 	}
-	
+
+
+
+
+
+}
+
+
+void RoomList::searchroom() {
+
+	unordered_map<int, Room>::iterator it;
+
+	it = Rooms.begin();
+
+	int arr[2][3];
+
+	bool check = false;
+
+	int count = 0;
+
+	cout << "Start Date : ";
+
+	cin >> arr[0][0] >> arr[0][1] >> arr[0][2];
+
+	cout << "End Date : ";
+
+
+
+	cin >> arr[1][0] >> arr[1][1] >> arr[1][2];
+
+
+
+	cout << "available rooms in this hotel : " << endl;
+
+
+
+	while (it != Rooms.end()) {
+
+		check = false;
+
+		for (int i = arr[0][1] - 1; i <= arr[1][1] - 1; i++)
+
+
+
+		{
+
+
+
+			for (int j = arr[0][0] - 1; j <= arr[1][0] - 1; j++)
+
+
+
+			{
+
+
+
+				if (it->second.Calender[i][j] == true){
+
+					check = true;
+
+					break;
+
+				}
+
+			}
+
+		}
+
+		if (check == false){
+
+			count++;
+
+			cout << "Room number : " << it->second.Room_Number << endl;
+
+
+
+			if (it->second.Singularity == true) {
+
+
+
+				cout << "this room is single  ";
+
+
+
+				if (it->second.Has_TV == true) {
+
+
+
+					cout << "HAS TV" << " ";
+
+
+
+				}
+
+
+
+				else {
+
+
+
+					cout << "NO TV " << " ";
+
+
+
+				}
+
+
+
+				if (it->second.Has_Wifi == true) {
+
+
+
+					cout << " HAS WIFI" << endl;
+
+
+
+				}
+
+
+
+				else {
+
+
+
+					cout << "NO WIFI" << endl;
+
+
+
+				}
+
+
+
+
+
+
+
+			}
+
+
+
+			else {
+
+
+
+				cout << "this room is double  ";
+
+
+
+				if (it->second.Has_TV == true) {
+
+
+
+					cout << "HAS TV" << " ";
+
+
+
+				}
+
+
+
+				else {
+
+
+
+					cout << "NO TV " << " ";
+
+
+
+				}
+
+
+
+				if (it->second.Has_Wifi == true) {
+
+
+
+					cout << " HAS WIFI" << endl;
+
+
+
+				}
+
+
+
+				else {
+
+
+
+					cout << "NO WIFI" << endl;
+
+
+
+				}
+
+
+
+			}
+
+		}
+
+
+
+		it++;
+
+	}
+
+	if (count == 0)
+
+
+
+	{
+
+
+
+		cout << "No Available Rooms in this date\n";
+
+
+
+	}
+
+
+
+
 
 }
 
 
 
-
-
-
-
-void RoomList::searchroom() {
-	unordered_map<int, Room>::iterator it;
-	it = Rooms.begin();
-	int arr[2][3];
-	bool check = false;
-	int count = 0;
-	cout << "Start Date : ";
-	cin >> arr[0][0] >> arr[0][1] >> arr[0][2];
-	cout << "End Date : ";
-
-	cin >> arr[1][0] >> arr[1][1] >> arr[1][2];
-
-	cout << "available rooms in this hotel : " << endl;
-
-	while (it != Rooms.end()) {
-		check=false;
-		for (int i = arr[0][1]-1; i <= arr[1][1]-1; i++)
-
-		{
-
-			for (int j = arr[0][0]-1; j <= arr[1][0]-1; j++)
-
-			{
-
-				if (it->second.Calender[i][j] == true){
-					check = true;
-					break;
-				}
-			}
-		}
-				if (check==false){
-					count++;
-					cout << "Room number : " << it->second.Room_Number << endl;
-
-					if (it->second.Singularity == true) {
-
-						cout << "this room is single  ";
-
-						if (it->second.Has_TV == true) {
-
-							cout << "HAS TV" << " ";
-
-						}
-
-						else {
-
-							cout << "NO TV " << " ";
-
-						}
-
-						if (it->second.Has_Wifi == true) {
-
-							cout << " HAS WIFI" << endl;
-
-						}
-
-						else {
-
-							cout << "NO WIFI" << endl;
-
-						}
-
-
-
-					}
-
-					else {
-
-						cout << "this room is double  ";
-
-						if (it->second.Has_TV == true) {
-
-							cout << "HAS TV" << " ";
-
-						}
-
-						else {
-
-							cout << "NO TV " << " ";
-
-						}
-
-						if (it->second.Has_Wifi == true) {
-
-							cout << " HAS WIFI" << endl;
-
-						}
-
-						else {
-
-							cout << "NO WIFI" << endl;
-
-						}
-
-					}
-				}
-			
-				it++;
-			}
-	if (count == 0)
-
-	{
-
-		cout << "No Available Rooms in this date\n";
-
-	}
-
-
-		}
 
 void HotelList::Addcomments(int id) {
 	string comm;
