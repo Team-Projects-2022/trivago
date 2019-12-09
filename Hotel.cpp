@@ -705,14 +705,13 @@ void HotelList::reserve(int id)
 
 }
 
-void HotelList::search(string c , int a ) {
+void HotelList::search(string c, int a) {
 
 
 	cout << "Enter the Information you want to search about" << endl;
 	cout << "Press (1) to search for Hotels Contains Pool. " << endl <<
 		"Press (2) to search for Hotels Contians Gym. " << endl <<
 		"Press (3) to search for Hotels Contains Free_meals. " << endl <<
-		"Press (4) to Return to Menu " << endl <<
 		"Enter your Choice : "; int choice; cin >> choice;
 
 	system("cls");
@@ -720,7 +719,7 @@ void HotelList::search(string c , int a ) {
 	bool p = false;
 
 	for (it = IDmap.begin(); it != IDmap.end(); it++) {
-		
+
 		if (choice == 1) {
 			if (it->second.Has_pool == true && it->second.Country == c) {
 				cout << it->second.Name << " Has Pool " << endl;
@@ -750,19 +749,13 @@ void HotelList::search(string c , int a ) {
 				}
 			}
 		}
-		else if (choice == 4) {
-			p = false;
-			break;
-		}
-	
-			
-		
+
 	}
-	if (p)
+	if (p == true)
 	{
 		cout << "Do You Want To See Hotel Info ? (y/n) : "; char x; cin >> x;
 		system("cls");
-	
+
 		if (x == 'y') {
 
 			while (true) {
@@ -800,22 +793,28 @@ void HotelList::search(string c , int a ) {
 					cout << "10.Rooms" << endl;
 
 					cout << endl;
-					
+
 					if (a == 2) {
+						cout << "/////////////////////////////////" << endl << endl;
+						cout << "Would you like to Reserve ?(y/n)"; char f; cin >> f;
+						if (f == 'y')
+							reserve(id);
+						cout << endl;
 						cout << "/////////////////////////////////" << endl << endl;
 						cout << "Do You want to Add Comments?(y/n) ";char ans;cin >> ans;
 						if (ans == 'y')
 							Addcomments(id);
 						cout << endl;
+						cout << "/////////////////////////////////" << endl << endl;
 						cout << "Do You want to Rate A Hotel ?(y/n) ";char ans1;cin >> ans1;
 						if (ans1 == 'y') {
 							rating(id);
 							cout << endl << "///////////////////////" << endl << endl;
 						}
 					}
-				
+
 				}
-				
+
 				cout << "If there are any other Hotels You'd Like to see (y/n) : "; char ANS;
 				cin >> ANS;
 				if (ANS == 'n' || ANS == 'N')
@@ -829,11 +828,11 @@ void HotelList::search(string c , int a ) {
 			}
 
 		}
-	
-		
+
 	}
 	else
-		cout << "There is no Hotels in this Area with this Query :( " << endl;
+		cout << "there is no Hotels in this Area with this Query  " << endl;
+
 }
 
 void HotelList::searchhotel(string c, int a) {
