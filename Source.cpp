@@ -100,7 +100,7 @@ int main()
 					else
 					{
 						string n = GetCountry();
-						hotels.search(n, admin );
+						hotels.search(n, admin);
 						system("pause");
 						system("cls");
 					}
@@ -154,7 +154,7 @@ int main()
 				case 2:
 				{
 					string y = GetCountry();
-					hotels.filter(y);
+					hotels.filter(y, admin);
 					system("pause");
 					system("cls");
 					break;
@@ -162,7 +162,7 @@ int main()
 				case 3:
 				{
 					string n = GetCountry();
-					hotels.search(n,admin);
+					hotels.search(n, admin);
 					system("pause");
 					system("cls");
 					break;
