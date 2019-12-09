@@ -172,12 +172,22 @@ void HotelList::filter(string k, int a) {
 							cout << "6.availability : " << "the hotel is available" << endl;
 
 						if (a == 2){
-							cout << "Do You want to Add Comments?(y/n) "; char ans; cin >> ans;
+							cout << "do you want to reserve ?(y/n)"; 
+							char s;
+							cin >> s;
+							if (s == 'y'){
+								reserve(id);
+							}
+							cout << "Do You want to Add Comments?(y/n) ";
+							char ans;
+							cin >> ans;
 							if (ans == 'y') {
 								Addcomments(id);
 							}
 
-							cout << "Do You want to Rate A Hotel ?(y/n) "; char ans1; cin >> ans1;
+							cout << "Do You want to Rate A Hotel ?(y/n) "; 
+							char ans1;
+							cin >> ans1;
 							if (ans1 == 'y') {
 								rating(id);
 							}
@@ -288,6 +298,12 @@ void HotelList::filter(string k, int a) {
 
 							cout << "6.availability : " << "the hotel is available" << endl;
 						if (a == 2){
+							cout << "do you want to reserve ?(y/n)";
+							char s;
+							cin >> s;
+							if (s == 'y'){
+								reserve(id);
+							}
 							cout << "Do You want to Add Comments?(y/n) "; char ans; cin >> ans;
 							if (ans == 'y') {
 								Addcomments(id);
