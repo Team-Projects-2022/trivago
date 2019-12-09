@@ -69,84 +69,90 @@ void Setup(HotelList& h)
 	h.IDmap.insert(make_pair(val.ID, val));
 
 	//////////////////////////////////////
-	val.Available = true;
-	val.Country = "Egypt";
-	val.Free_Meals[0] = false;
-	val.Free_Meals[1] = false;
-	val.Has_Gym = false;
-	val.Has_pool = false;
-	val.ID = 1001;
-	val.Location = "Gesr ElSuez - Cairo";
-	val.Name = "Elsalam Hotel";
-	val.Number_Of_Rooms = 0;
-	val.Number_Of_Stars = 1;
-	val.Rate = 3.2;
+	Hotel val2;
+	val2.Available = true;
+	val2.Country = "Egypt";
+	val2.Free_Meals[0] = false;
+	val2.Free_Meals[1] = false;
+	val2.Has_Gym = false;
+	val2.Has_pool = false;
+	val2.ID = 1001;
+	val2.Location = "Gesr ElSuez - Cairo";
+	val2.Name = "Elsalam Hotel";
+	val2.Number_Of_Rooms = 0;
+	val2.Number_Of_Stars = 1;
+	val2.Rate = 3.2;
 
-	h.IDmap.insert(make_pair(val.ID, val));
-
-	////////////////////////////////////
-	val.Available = true;
-	val.Country = "France";
-	val.Free_Meals[0] = true;
-	val.Free_Meals[1] = true;
-	val.Has_Gym = true;
-	val.Has_pool = true;
-	val.ID = 1002;
-	val.Location = "Palace du colonel Fabien - Paris ";
-	val.Name = "Generator Paris";
-	val.Number_Of_Rooms = 0;
-	val.Number_Of_Stars = 3;
-	val.Rate = 7.9;
-
-	h.IDmap.insert(make_pair(val.ID, val));
+	h.IDmap.insert(make_pair(val2.ID, val2));
 
 	////////////////////////////////////
-	val.Available = true;
-	val.Country = "USA";
-	val.Free_Meals[0] = true;
-	val.Free_Meals[1] = true;
-	val.Has_Gym = false;
-	val.Has_pool = true;
-	val.ID = 1003;
-	val.Location = "3555 Las Vegas Boulevard - Las Vegas";
-	val.Name = "Flamingo Las Vegas";
-	val.Number_Of_Rooms = 0;
-	val.Number_Of_Stars = 3;
-	val.Rate = 7.8;
+	Hotel val3;
+	val3.Available = true;
+	val3.Country = "France";
+	val3.Free_Meals[0] = true;
+	val3.Free_Meals[1] = true;
+	val3.Has_Gym = true;
+	val3.Has_pool = true;
+	val3.ID = 1002;
+	val3.Location = "Palace du colonel Fabien - Paris ";
+	val3.Name = "Generator Paris";
+	val3.Number_Of_Rooms = 0;
+	val3.Number_Of_Stars = 3;
+	val3.Rate = 7.9;
 
-	h.IDmap.insert(make_pair(val.ID, val));
+	h.IDmap.insert(make_pair(val3.ID, val3));
+
+	////////////////////////////////////
+	Hotel val4;
+	val4.Available = true;
+	val4.Country = "USA";
+	val4.Free_Meals[0] = true;
+	val4.Free_Meals[1] = true;
+	val4.Has_Gym = false;
+	val4.Has_pool = true;
+	val4.ID = 1003;
+	val4.Location = "3555 Las Vegas Boulevard - Las Vegas";
+	val4.Name = "Flamingo Las Vegas";
+	val4.Number_Of_Rooms = 0;
+	val4.Number_Of_Stars = 3;
+	val4.Rate = 7.8;
+
+	h.IDmap.insert(make_pair(val4.ID, val4));
 
 	/////////////////////////////////////
-	val.Available = true;
-	val.Country = "USA";
-	val.Free_Meals[0] = false;
-	val.Free_Meals[1] = false;
-	val.Has_Gym = true;
-	val.Has_pool = true;
-	val.ID = 1004;
-	val.Location = "3850 Las Vegas Boulevard south - Las Vegas";
-	val.Name = "Excalibur";
-	val.Number_Of_Rooms = 0;
-	val.Number_Of_Stars = 3;
-	val.Rate = 7.8;
+	Hotel val5;
 
-	h.IDmap.insert(make_pair(val.ID, val));
+	val5.Available = true;
+	val5.Country = "USA";
+	val5.Free_Meals[0] = false;
+	val5.Free_Meals[1] = false;
+	val5.Has_Gym = true;
+	val5.Has_pool = true;
+	val5.ID = 1004;
+	val5.Location = "3850 Las Vegas Boulevard south - Las Vegas";
+	val5.Name = "Excalibur";
+	val5.Number_Of_Rooms = 0;
+	val5.Number_Of_Stars = 3;
+	val5.Rate = 7.8;
+
+	h.IDmap.insert(make_pair(val5.ID, val5));
 
 	/////////////////////////////////////
-	val.Available = true;
-	val.Country = "India";
-	val.Free_Meals[0] = false;
-	val.Free_Meals[1] = true;
-	val.Has_Gym = true;
-	val.Has_pool = true;
-	val.ID = 1005;
-	val.Location = "Taj East Gate road - Uttar Pradesh - Agra";
-	val.Name = "Taj Hotel";
-	val.Number_Of_Rooms = 0;
-	val.Number_Of_Stars = 5;
-	val.Rate = 8.6;
+	Hotel val6;
+	val6.Available = true;
+	val6.Country = "India";
+	val6.Free_Meals[0] = false;
+	val6.Free_Meals[1] = true;
+	val6.Has_Gym = true;
+	val6.Has_pool = true;
+	val6.ID = 1005;
+	val6.Location = "Taj East Gate road - Uttar Pradesh - Agra";
+	val6.Name = "Taj Hotel";
+	val6.Number_Of_Rooms = 0;
+	val6.Number_Of_Stars = 5;
+	val6.Rate = 8.6;
 
-	h.IDmap.insert(make_pair(val.ID, val));
+	h.IDmap.insert(make_pair(val6.ID, val6));
 
 }
 
