@@ -60,7 +60,7 @@ public:
 	void Display_hotels();
 	void Addcomments(int);
 	void rating(int);
-	void search(string); // in specific query gym ,pool, free_meals ..
+	void search(string , int); // in specific query gym ,pool, free_meals ..
 	void filter(string);
 	void searchhotel(string c, int a);
 	void reserve(int);
