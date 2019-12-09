@@ -128,13 +128,13 @@ void HotelList::filter(string k, int a) {
 					cout << "enter th ID of the hotel you want" << endl;
 
 					cin >> id;
-					if (IDmap.find(id) == IDmap.end()){
+					if (IDmap.find(id) == IDmap.end()) {
 						cout << "ID Not Valid " << endl;
 						cout << "Please enter th ID again";
 						continue;
 					}
 
-					else{
+					else {
 						cout << "1.Country : " << IDmap[id].Country << endl;
 
 						cout << "2.Location : " << IDmap[id].Location << endl;
@@ -171,11 +171,11 @@ void HotelList::filter(string k, int a) {
 
 							cout << "6.availability : " << "the hotel is available" << endl;
 
-						if (a == 2){
-							cout << "do you want to reserve ?(y/n)"; 
+						if (a == 2) {
+							cout << "do you want to reserve ?(y/n)";
 							char s;
 							cin >> s;
-							if (s == 'y'){
+							if (s == 'y') {
 								reserve(id);
 							}
 							cout << "Do You want to Add Comments?(y/n) ";
@@ -185,7 +185,7 @@ void HotelList::filter(string k, int a) {
 								Addcomments(id);
 							}
 
-							cout << "Do You want to Rate A Hotel ?(y/n) "; 
+							cout << "Do You want to Rate A Hotel ?(y/n) ";
 							char ans1;
 							cin >> ans1;
 							if (ans1 == 'y') {
@@ -256,12 +256,12 @@ void HotelList::filter(string k, int a) {
 					cout << "enter th ID of the hotel you want" << endl;
 
 					cin >> id;
-					if (IDmap.find(id) == IDmap.end()){
+					if (IDmap.find(id) == IDmap.end()) {
 						cout << "ID Not Valid " << endl;
 						cout << "Please enter th ID again";
 						continue;
 					}
-					else{
+					else {
 						cout << "1.Country : " << IDmap[id].Country << endl;
 
 						cout << "2.Location : " << IDmap[id].Location << endl;
@@ -297,11 +297,11 @@ void HotelList::filter(string k, int a) {
 						else
 
 							cout << "6.availability : " << "the hotel is available" << endl;
-						if (a == 2){
+						if (a == 2) {
 							cout << "do you want to reserve ?(y/n)";
 							char s;
 							cin >> s;
-							if (s == 'y'){
+							if (s == 'y') {
 								reserve(id);
 							}
 							cout << "Do You want to Add Comments?(y/n) "; char ans; cin >> ans;
@@ -639,10 +639,10 @@ void HotelList::reserve(int id)
 	bool check = false;
 	for (unordered_map<int, Room>::iterator it = IDmap[id].roomList.Rooms.begin(); it != IDmap[id].roomList.Rooms.end(); it++)
 	{
-		check=false;
-		for (int i = arr[0][1]-1; i <= arr[1][1]-1; i++)
+		check = false;
+		for (int i = arr[0][1] - 1; i <= arr[1][1] - 1; i++)
 		{
-			for (int j = arr[0][0]-1; j <= arr[1][0]-1; j++)
+			for (int j = arr[0][0] - 1; j <= arr[1][0] - 1; j++)
 			{
 				if (it->second.Calender[i][j] == true)
 				{
@@ -674,9 +674,9 @@ void HotelList::reserve(int id)
 	{
 		int no;
 		cout << "Enter the room number you would like to reserve : "; cin >> no;
-		for (int i = arr[0][1]-1; i <= arr[1][1]-1; i++)
+		for (int i = arr[0][1] - 1; i <= arr[1][1] - 1; i++)
 		{
-			for (int j = arr[0][0]-1; j <= arr[1][0]-1; j++)
+			for (int j = arr[0][0] - 1; j <= arr[1][0] - 1; j++)
 			{
 				IDmap[id].roomList.Rooms[no].Calender[i][j] = true;
 			}
@@ -851,7 +851,8 @@ void HotelList::search(string c, int a) {
 
 }
 
-void HotelList::searchhotel(string c, int a) {
+void HotelList::searchhotel(string c, int a) 
+{
 
 	unordered_map<int, Hotel>::iterator it;
 
@@ -861,7 +862,7 @@ void HotelList::searchhotel(string c, int a) {
 
 	cout << " Available Hotels in this country ::  " << endl;
 
-	for (it = IDmap.begin(); it != IDmap.end(); it++){
+	for (it = IDmap.begin(); it != IDmap.end(); it++) {
 
 		if (it->second.Available && it->second.Country == c) {
 
@@ -877,17 +878,17 @@ void HotelList::searchhotel(string c, int a) {
 
 
 
-	if (counth == 0){
+	if (counth == 0) {
 
 		cout << " No Available Hotels in this country: " << endl;
 
-		if (a == 1){
+		if (a == 1) {
 
 			cout << " do you want to add new hotels to this country ? (yes /no) " << endl;
 
 			cin >> AD;
 
-			if (AD == "yes"){
+			if (AD == "yes") {
 
 				Add_hotel_Admin();
 
@@ -915,7 +916,7 @@ void HotelList::searchhotel(string c, int a) {
 
 	{
 
-		if (counth == 0){
+		if (counth == 0) {
 
 			break;
 
@@ -971,7 +972,7 @@ void HotelList::searchhotel(string c, int a) {
 
 
 
-			if (IDmap.find(idhotel) == IDmap.end()){
+			if (IDmap.find(idhotel) == IDmap.end()) {
 
 				cout << "unvalid id" << endl;
 
@@ -982,10 +983,10 @@ void HotelList::searchhotel(string c, int a) {
 			{
 
 
-				
+
 				IDmap[idhotel].roomList.searchroom();
 
-				if (a == 2){
+				if (a == 2) {
 
 					char ans;
 
@@ -997,7 +998,7 @@ void HotelList::searchhotel(string c, int a) {
 
 					cin >> ans;
 
-					if (ans == 'y'){
+					if (ans == 'y') {
 
 						Addcomments(idhotel);
 
@@ -1057,8 +1058,8 @@ void HotelList::searchhotel(string c, int a) {
 
 }
 
-
-void RoomList::searchroom() {
+void RoomList::searchroom() 
+{
 
 	unordered_map<int, Room>::iterator it;
 
@@ -1106,7 +1107,7 @@ void RoomList::searchroom() {
 
 
 
-				if (it->second.Calender[i][j] == true){
+				if (it->second.Calender[i][j] == true) {
 
 					check = true;
 
@@ -1118,7 +1119,7 @@ void RoomList::searchroom() {
 
 		}
 
-		if (check == false){
+		if (check == false) {
 
 			count++;
 
@@ -1275,9 +1276,6 @@ void RoomList::searchroom() {
 
 
 }
-
-
-
 
 void HotelList::Addcomments(int id) {
 	string comm;
