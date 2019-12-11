@@ -23,7 +23,7 @@ void Setup(HotelList& h)
 	val.Country = "Egypt";
 	val.Free_Meals[0] = false;
 	val.Free_Meals[1] = true;
-	val.Has_Gym = false;
+	val.Has_Gym = true;
 	val.Has_pool = true;
 	val.ID = 1000;
 	val.Location = "Triumph - Cairo";
