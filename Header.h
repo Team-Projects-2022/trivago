@@ -23,7 +23,7 @@ void Setup(HotelList& h)
 	val.Country = "Egypt";
 	val.Free_Meals[0] = false;
 	val.Free_Meals[1] = true;
-	val.Has_Gym = true;
+	val.Has_Gym = false;
 	val.Has_pool = true;
 	val.ID = 1000;
 	val.Location = "Triumph - Cairo";
@@ -31,6 +31,16 @@ void Setup(HotelList& h)
 	val.Number_Of_Rooms = 2;
 	val.Number_Of_Stars = 2;
 	val.Rate = 5;
+
+	string name = "Ahmad.Ali";
+	string comment = "This Hotel is the worst.";
+	pair<string, string> C = make_pair(name, comment);
+	val.vcomments.push_back(C);
+
+	string name2 = "Mahmoud245";
+	string comment2 = "I didn't enjoy my stay. :(";
+	pair<string, string> C2 = make_pair(name2, comment2);
+	val.vcomments.push_back(C2);
 
 	Room rval;
 
@@ -168,7 +178,7 @@ string GetCountry()
 int Login(userInfo &U)
 {
 	cout << "Login :" << endl << endl;
-	cout << "1. Sign Up " << endl;
+	cout << "1. Singn Up " << endl;
 	cout << "2. Sign in" << endl<< endl;
 	int ch;
 	cout << "Enter your choice :";
