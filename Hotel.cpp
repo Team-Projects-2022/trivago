@@ -65,7 +65,7 @@ void RoomList::Add_Room_Admin()
 
 }
 
-void HotelList::filter(string k, int a) {
+void HotelList::filter(string k, int a, string n) {
 
 	unordered_map<int, Hotel >::iterator it;
 	it = IDmap.begin();
@@ -171,6 +171,8 @@ void HotelList::filter(string k, int a) {
 
 							cout << "6.availability : " << "the hotel is available" << endl;
 
+						show_comments(id);
+
 						if (a == 2) {
 							cout << "do you want to reserve ?(y/n)";
 							char s;
@@ -182,7 +184,7 @@ void HotelList::filter(string k, int a) {
 							char ans;
 							cin >> ans;
 							if (ans == 'y') {
-								Addcomments(id);
+								Addcomments(id,n);
 							}
 
 							cout << "Do You want to Rate A Hotel ?(y/n) ";
@@ -297,6 +299,9 @@ void HotelList::filter(string k, int a) {
 						else
 
 							cout << "6.availability : " << "the hotel is available" << endl;
+
+						show_comments(id);
+
 						if (a == 2) {
 							cout << "do you want to reserve ?(y/n)";
 							char s;
@@ -306,7 +311,7 @@ void HotelList::filter(string k, int a) {
 							}
 							cout << "Do You want to Add Comments?(y/n) "; char ans; cin >> ans;
 							if (ans == 'y') {
-								Addcomments(id);
+								Addcomments(id, n);
 							}
 
 							cout << "Do You want to Rate A Hotel ?(y/n) "; char ans1; cin >> ans1;
@@ -372,6 +377,7 @@ void HotelList::Display_hotels()
 			if (IDmap[ID].Available) { cout << "9.Availability now : Available " << endl; }
 			else { cout << "9.Availability : Isn't available now" << endl; }
 			cout << endl;
+			show_comments(ID);
 		}
 		else
 			cout << "Unavailable \n";
@@ -474,7 +480,6 @@ void RoomList::Update_Room()
 	}
 
 }
-
 
 void HotelList::show()
 {
@@ -632,7 +637,6 @@ void HotelList::Update_hotel()
 
 }
 
-
 void HotelList::reserve(int id)
 {
 	int arr[2][3];
@@ -728,14 +732,14 @@ void HotelList::reserve(int id)
 
 }
 
-void HotelList::search(string c, int a) {
+void HotelList::search(string c, int a, string n) {
 
 
 	cout << "Enter the Information you want to search about" << endl;
 	cout << "Press (1) to search for Hotels Contains Pool. " << endl <<
 		"Press (2) to search for Hotels Contians Gym. " << endl <<
 		"Press (3) to search for Hotels Contains Free_meals. " << endl <<
-		"Press (4) to search for the three Queries. " << endl<<
+		"Press (4) to search for the three Queries. " << endl <<
 		"Enter your Choice : "; int choice; cin >> choice;
 
 	system("cls");
@@ -773,18 +777,18 @@ void HotelList::search(string c, int a) {
 				}
 			}
 		}
-			else if (choice == 4){
-				if (it->second.Has_Gym == true && it->second.Has_pool == true &&
-					(it->second.Free_Meals[0] || it->second.Free_Meals[1])
-					&& it->second.Country == c) {
-					cout << it->second.Name << " Has The Three Queries. " << endl;
-					cout << " It's ID is " << it->first << endl;
-					p = true;
-				}
+		else if (choice == 4) {
+			if (it->second.Has_Gym == true && it->second.Has_pool == true &&
+				(it->second.Free_Meals[0] || it->second.Free_Meals[1])
+				&& it->second.Country == c) {
+				cout << it->second.Name << " Has The Three Queries. " << endl;
+				cout << " It's ID is " << it->first << endl;
+				p = true;
 			}
 		}
+	}
 
-	
+
 	if (p == true)
 	{
 		cout << "Do You Want To See Hotel Info ? (y/n) : "; char x; cin >> x;
@@ -824,7 +828,8 @@ void HotelList::search(string c, int a) {
 
 					else { cout << "8.Gym : Doesn't have gym " << endl; }
 
-					cout << "10.Rooms" << endl;
+					show_comments(id);
+
 
 					cout << endl;
 
@@ -837,7 +842,7 @@ void HotelList::search(string c, int a) {
 						cout << "/////////////////////////////////" << endl << endl;
 						cout << "Do You want to Add Comments?(y/n) "; char ans; cin >> ans;
 						if (ans == 'y')
-							Addcomments(id);
+							Addcomments(id, n);
 						cout << endl;
 						cout << "/////////////////////////////////" << endl << endl;
 						cout << "Do You want to Rate A Hotel ?(y/n) "; char ans1; cin >> ans1;
@@ -869,7 +874,7 @@ void HotelList::search(string c, int a) {
 
 }
 
-void HotelList::searchhotel(string c, int a)
+void HotelList::searchhotel(string c, int a, string n)
 {
 
 	unordered_map<int, Hotel>::iterator it;
@@ -878,7 +883,7 @@ void HotelList::searchhotel(string c, int a)
 
 	string AD;
 
-	cout << " Available Hotels in this country ::  " << endl;
+	cout << " Available Hotels in this country :  " << endl;
 
 	for (it = IDmap.begin(); it != IDmap.end(); it++) {
 
@@ -1018,7 +1023,7 @@ void HotelList::searchhotel(string c, int a)
 
 					if (ans == 'y') {
 
-						Addcomments(idhotel);
+						Addcomments(idhotel, n);
 
 					}
 
@@ -1295,11 +1300,23 @@ void RoomList::searchroom()
 
 }
 
-void HotelList::Addcomments(int id) {
+void HotelList::Addcomments(int id , string n) {
 	string comm;
 	cout << "Your Comments : "; cin.ignore(); cin.clear(); cin.sync(); getline(cin, comm);
-	IDmap[id].vcomments.push_back(comm);
+	pair<string, string> c;
+	c = make_pair(n, comm);
+	IDmap[id].vcomments.push_back(c);
 
+}
+
+void HotelList::show_comments(int id)
+{
+	cout << "Comments :" << endl;
+	for (int i = 0; i < IDmap[id].vcomments.size(); i++)
+	{
+		cout << IDmap[id].vcomments[i].first << " : " << IDmap[id].vcomments[i].second << endl;
+	}
+	cout << endl;
 }
 
 void HotelList::rating(int id) {
