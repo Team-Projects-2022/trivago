@@ -692,47 +692,132 @@ void HotelList::reserve(int id)
 	for (unordered_map<int, Room>::iterator it = IDmap[id].roomList.Rooms.begin(); it != IDmap[id].roomList.Rooms.end(); it++)
 	{
 		check = false;
-		for (int i = arr[0][1] - 1; i <= arr[1][1] - 1; i++)
+
+		if (arr[0][1] == arr[1][1])
 		{
-			for (int j = arr[0][0] - 1; j <= arr[1][0] - 1; j++)
+			for (int i = arr[0][1] - 1; i <= arr[1][1] - 1; i++)
 			{
-				if (it->second.Calender[i][j] == true)
+				for (int j = arr[0][0] - 1; j <= arr[1][0] - 1; j++)
+				{
+					if (it->second.Calender[i][j] == true)
+					{
+						check = true;
+						break;
+					}
+				}
+			}
+		}
+		else if (arr[1][1] - arr[0][1] == 1)
+		{
+			for (int i = arr[0][0] - 1; i <= 30; i++)
+			{
+				if (it->second.Calender[arr[0][1] - 1][i] == true)
+				{
+					check = true;
+					break;
+				}
+			}
+			for (int i = 0; i <= arr[1][0]; i++)
+			{
+				
+				if (it->second.Calender[arr[1][1] - 1][i] == true)
 				{
 					check = true;
 					break;
 				}
 			}
 		}
+		else
 		{
-			if (check == false)
+			for (int i = arr[0][0] - 1; i <= 30; i++)
 			{
-				cout << "Room #" << count++ << endl;
-				if (it->second.Has_TV) { cout << "1.Wifi : " << "Has Wifi" << endl; }
-				else { cout << "1.Wifi : " << "Doesn't have Wifi" << endl; }
-				if (it->second.Has_TV) { cout << "2.Tv : " << "Has Tv" << endl; }
-				else { cout << "2.Tv : " << "Doesn't have Tv" << endl; }
-				if (it->second.Singularity) { cout << "3.Single or double : " << "Single" << endl; }
-				else { cout << "3.Single or double : " << "Double" << endl; }
-				cout << endl;
+				if (it->second.Calender[arr[0][1] - 1][i] == true)
+				{
+					check = true;
+					break;
+				}
 			}
+			for (int i = arr[0][1]; i <= arr[1][1] - 2; i++)
+			{
+				for (int j = 0; j < 30; j++)
+				{
+					if (it->second.Calender[i][j] == true)
+					{
+						check = true;
+						break;
+					}
+				}
+			}
+			for (int i = 0; i <= arr[1][0]; i++)
+			{
+				if (it->second.Calender[arr[1][1] - 1][i] == true)
+				{
+					check = true;
+					break;
+				}
+			}
+		}
+		if (check == false)
+		{
+			count++;
+			cout << "Room number :" << it->second.Room_Number << endl;
+			if (it->second.Has_TV) { cout << "1.Wifi : " << "Has Wifi" << endl; }
+			else { cout << "1.Wifi : " << "Doesn't have Wifi" << endl; }
+			if (it->second.Has_TV) { cout << "2.Tv : " << "Has Tv" << endl; }
+			else { cout << "2.Tv : " << "Doesn't have Tv" << endl; }
+			if (it->second.Singularity) { cout << "3.Single or double : " << "Single" << endl; }
+			else { cout << "3.Single or double : " << "Double" << endl; }
+			cout << endl;
 		}
 	}
 	if (count == 1)
 	{
 		cout << "No Available Rooms in this date\n";
 	}
-
 	else
 	{
 		int no;
 		cout << "Enter the room number you would like to reserve : "; cin >> no;
-		for (int i = arr[0][1] - 1; i <= arr[1][1] - 1; i++)
+		if (arr[0][1] == arr[1][1])
 		{
-			for (int j = arr[0][0] - 1; j <= arr[1][0] - 1; j++)
+			for (int i = arr[0][1] - 1; i <= arr[1][1] - 1; i++)
 			{
-				IDmap[id].roomList.Rooms[no].Calender[i][j] = true;
+				for (int j = arr[0][0] - 1; j <= arr[1][0] - 1; j++)
+				{
+					IDmap[id].roomList.Rooms[no].Calender[i][j] = true;
+				}
 			}
 		}
+		else if (arr[1][1] - arr[0][1] == 1)
+		{
+			for (int i = arr[0][0] - 1; i <= 30; i++)
+			{
+				IDmap[id].roomList.Rooms[no].Calender[arr[0][1] - 1][i] = true;
+			}
+			for (int i = 0; i <= arr[1][0]; i++)
+			{
+				IDmap[id].roomList.Rooms[no].Calender[arr[1][1] - 1][i] = true;
+			}
+		}
+		else
+		{
+			for (int i = arr[0][0] - 1; i <= 30; i++)
+			{
+				IDmap[id].roomList.Rooms[no].Calender[arr[0][1] - 1][i] = true;
+			}
+			for (int i = arr[0][1]; i <= arr[1][1] - 2; i++)
+			{
+				for (int j = 0; j < 30; j++)
+				{
+					IDmap[id].roomList.Rooms[no].Calender[i][j] = true;
+				}
+			}
+			for (int i = 0; i <= arr[1][0]; i++)
+			{
+				IDmap[id].roomList.Rooms[no].Calender[arr[1][1] - 1][i] = true;
+			}
+		}
+
 
 		bool av = true;
 		for (int i = 0; i < 12; i++)
@@ -1058,7 +1143,7 @@ void HotelList::searchhotel(string c, int a, string n)
 
 					char ans2;
 
-					cout << " do you want to add comments? (y/n) " << endl;
+					cout << " do you want to add comments? (y/n) ";
 
 					cin >> ans;
 
@@ -1068,7 +1153,7 @@ void HotelList::searchhotel(string c, int a, string n)
 
 					}
 
-					cout << " do you want to rate ?(y/n) <<" << endl;
+					cout << " do you want to rate ?(y/n) ";
 
 					cin >> ans1;
 
@@ -1080,7 +1165,7 @@ void HotelList::searchhotel(string c, int a, string n)
 
 					}
 
-					cout << " Do you want to reserve? (y/n) " << " ";
+					cout << " Do you want to reserve? (y/n) ";
 
 					cin >> ans2;
 
@@ -1093,7 +1178,6 @@ void HotelList::searchhotel(string c, int a, string n)
 			}
 
 		}
-
 
 
 		cout << "Do you want to display another hotel's info(y/n) :" << " ";
@@ -1133,7 +1217,7 @@ void RoomList::searchroom()
 
 	bool check = false;
 
-	int count = 0;
+	int count = 1;
 
 	cout << "Start Date : ";
 
@@ -1151,39 +1235,76 @@ void RoomList::searchroom()
 
 
 
-	while (it != Rooms.end()) {
-
+	for (unordered_map<int, Room>::iterator it = Rooms.begin(); it != Rooms.end(); it++)
+	{
 		check = false;
 
-		for (int i = arr[0][1] - 1; i <= arr[1][1] - 1; i++)
-
-
-
+		if (arr[0][1] == arr[1][1])
 		{
-
-
-
-			for (int j = arr[0][0] - 1; j <= arr[1][0] - 1; j++)
-
-
-
+			for (int i = arr[0][1] - 1; i <= arr[1][1] - 1; i++)
+			{
+				for (int j = arr[0][0] - 1; j <= arr[1][0] - 1; j++)
+				{
+					if (it->second.Calender[i][j] == true)
+					{
+						check = true;
+						break;
+					}
+				}
+			}
+		}
+		else if (arr[1][1] - arr[0][1] == 1)
+		{
+			for (int i = arr[0][0] - 1; i <= 30; i++)
+			{
+				if (it->second.Calender[arr[0][1] - 1][i] == true)
+				{
+					check = true;
+					break;
+				}
+			}
+			for (int i = 0; i <= arr[1][0]; i++)
 			{
 
-
-
-				if (it->second.Calender[i][j] == true) {
-
+				if (it->second.Calender[arr[1][1] - 1][i] == true)
+				{
 					check = true;
-
 					break;
-
 				}
-
 			}
-
 		}
-
-		if (check == false) {
+		else
+		{
+			for (int i = arr[0][0] - 1; i <= 30; i++)
+			{
+				if (it->second.Calender[arr[0][1] - 1][i] == true)
+				{
+					check = true;
+					break;
+				}
+			}
+			for (int i = arr[0][1]; i <= arr[1][1] - 2; i++)
+			{
+				for (int j = 0; j < 30; j++)
+				{
+					if (it->second.Calender[i][j] == true)
+					{
+						check = true;
+						break;
+					}
+				}
+			}
+			for (int i = 0; i <= arr[1][0]; i++)
+			{
+				if (it->second.Calender[arr[1][1] - 1][i] == true)
+				{
+					check = true;
+					break;
+				}
+			}
+		}
+		if (check == false)
+		{
 
 			count++;
 
@@ -1211,7 +1332,8 @@ void RoomList::searchroom()
 
 
 
-				else {
+				else 
+				{
 
 
 
@@ -1315,30 +1437,11 @@ void RoomList::searchroom()
 
 		}
 
-
-
-		it++;
-
 	}
-
-	if (count == 0)
-
-
-
+	if (count == 1)
 	{
-
-
-
 		cout << "No Available Rooms in this date\n";
-
-
-
 	}
-
-
-
-
-
 }
 
 void HotelList::Addcomments(int id , string n) {
