@@ -386,8 +386,9 @@ void HotelList::Display_hotels()
 
 void RoomList::Update_Room()
 {
+	cout << endl;
 	int id;
-	cout << "Enter The ID of the Room you want to modify : ";
+	cout << "Enter The number of the Room you want to modify : ";
 	cin >> id;
 	cout << endl;
 	int counter = 0;
@@ -397,10 +398,10 @@ void RoomList::Update_Room()
 		cout << "ID not valid" << endl;
 		c = false;
 	}
-
+	system("cls");
 	while (c)
 	{
-		if (Rooms[id].Has_TV) { cout << "1.Wifi : " << "Has Wifi" << endl; }
+		if (Rooms[id].Has_Wifi) { cout << "1.Wifi : " << "Has Wifi" << endl; }
 		else { cout << "1.Wifi : " << "Doesn't have Wifi" << endl; }
 		if (Rooms[id].Has_TV) { cout << "2.Tv : " << "Has Tv" << endl; }
 		else { cout << "2.Tv : " << "Doesn't have Tv" << endl; }
@@ -416,55 +417,54 @@ void RoomList::Update_Room()
 		{
 		case 1:
 		{
-				  cout << "Modify Wifi availability :" << endl;
-				  if (Rooms[id].Has_Wifi)
-				  {
-					  cout << "Room Wifi deleted " << endl;
-					  Rooms[id].Has_Wifi = false;
-				  }
-				  else
-				  {
-					  cout << "Wifi Added !" << endl;
-					  Rooms[id].Has_Wifi = true;
-				  }
-				  break;
+			cout << "Modify Wifi availability :" << endl;
+			if (Rooms[id].Has_Wifi)
+			{
+				cout << "Room Wifi deleted " << endl;
+				Rooms[id].Has_Wifi = false;
+			}
+			else
+			{
+				cout << "Wifi Added !" << endl;
+				Rooms[id].Has_Wifi = true;
+			}
+			break;
 		}
 		case 2:
 		{
-				  cout << "Modify Tv availability :" << endl;
-				  if (Rooms[id].Has_TV)
-				  {
-					  cout << "Room Tv deleted " << endl;
-					  Rooms[id].Has_TV = false;
-				  }
-				  else
-				  {
-					  cout << "Tv Added !" << endl;
-					  Rooms[id].Has_TV = true;
-				  }
-				  break;
+			cout << "Modify Tv availability :" << endl;
+			if (Rooms[id].Has_TV)
+			{
+				cout << "Room Tv deleted " << endl;
+				Rooms[id].Has_TV = false;
+			}
+			else
+			{
+				cout << "Tv Added !" << endl;
+				Rooms[id].Has_TV = true;
+			}
+			break;
 		}
 		case 3:
 		{
-				  cout << "Modify Singularity :" << endl;
-				  if (Rooms[id].Singularity)
-				  {
-					  cout << "Room is now double !" << endl;
-					  Rooms[id].Has_TV = false;
-				  }
-				  else
-				  {
-					  cout << "Room is now single !" << endl;
-					  Rooms[id].Has_TV = true;
-				  }
-				  break;
+			cout << "Modify Singularity :" << endl;
+			if (Rooms[id].Singularity)
+			{
+				cout << "Room is now double !" << endl;
+				Rooms[id].Singularity = false;
+			}
+			else
+			{
+				cout << "Room is now single !" << endl;
+				Rooms[id].Singularity = true;
+			}
+			break;
 		}
 		default:
 		{
-				   break;
+			break;
 		}
 		}
-		system("cls");
 		char ans;
 		cout << "Do you want to modify any other thing in this room ?" << endl;
 		cin >> ans;
@@ -474,6 +474,7 @@ void RoomList::Update_Room()
 	}
 
 }
+
 
 void HotelList::show()
 {
@@ -527,92 +528,97 @@ void HotelList::Update_hotel()
 		{
 		case 1:
 		{
-				  string x;
-				  cout << "Modify the name: ";
-				  cin.ignore(); cin.clear(); cin.sync(); getline(cin, x);
+			string x;
+			cout << "Modify the name: ";
+			cin.ignore(); cin.clear(); cin.sync(); getline(cin, x);
 
-				  IDmap[id].Name = x;
+			IDmap[id].Name = x;
 
-				  break;
+			break;
 		}
 		case 2:
 		{
-				  int x;
-				  cout << "Modify the number of stars: ";
-				  cin >> x;
-				  IDmap[id].Number_Of_Stars = x;
-				  break;
+			int x;
+			cout << "Modify the number of stars: ";
+			cin >> x;
+			IDmap[id].Number_Of_Stars = x;
+			break;
 		}
 		case 3:
 		{
-				  string x;
-				  cout << "Modify the country: ";
-				  cin.ignore();
-				  cin.clear();
-				  cin.sync();
-				  getline(cin, x);
-				  IDmap[id].Country = x;
-				  break;
+			string x;
+			cout << "Modify the country: ";
+			cin.ignore();
+			cin.clear();
+			cin.sync();
+			getline(cin, x);
+			IDmap[id].Country = x;
+			break;
 		}
 		case 4:
 		{
-				  string x;
-				  cout << "Modify the location : ";
-				  cin.ignore();
-				  cin.clear();
-				  cin.sync();
-				  getline(cin, x);
-				  IDmap[id].Location = x;
-				  break;
+			string x;
+			cout << "Modify the location : ";
+			cin.ignore();
+			cin.clear();
+			cin.sync();
+			getline(cin, x);
+			IDmap[id].Location = x;
+			break;
 		}
 		case 5:
 		{
-				  bool x, y;
-				  cout << "Modify Free meals : breakfast then dinner ";
-				  cin >> x;
-				  IDmap[id].Free_Meals[0] = x;
-				  cin >> y;
-				  IDmap[id].Free_Meals[1] = y;
+			bool x, y;
+			cout << "Modify Free meals : breakfast then dinner ";
+			cin >> x;
+			IDmap[id].Free_Meals[0] = x;
+			cin >> y;
+			IDmap[id].Free_Meals[1] = y;
 
-				  break;
+			break;
 		}
 		case 6:
 		{
-				  cout << "Modify pool availability : ";
-				  if (IDmap[id].Has_pool == true)
-					  IDmap[id].Has_pool = false;
-				  else
-					  IDmap[id].Has_pool = true;
-				  break;
+			cout << "Modify pool availability : ";
+			if (IDmap[id].Has_pool == true)
+				IDmap[id].Has_pool = false;
+			else
+				IDmap[id].Has_pool = true;
+			break;
 		}
 		case 7:
 		{
-				  cout << "Modify gym availability : ";
-				  if (IDmap[id].Has_Gym == true)
-					  IDmap[id].Has_Gym = false;
-				  else
-					  IDmap[id].Has_Gym = true;
-				  break;
+			cout << "Modify gym availability : ";
+			if (IDmap[id].Has_Gym == true)
+				IDmap[id].Has_Gym = false;
+			else
+				IDmap[id].Has_Gym = true;
+			break;
 		}
 		case 8:
 		{
-				  cout << "Modify hotel availability : ";
-				  if (IDmap[id].Available == true)
-					  IDmap[id].Available = false;
-				  else
-					  IDmap[id].Available = true;
-				  break;
+			cout << "Modify hotel availability : ";
+			if (IDmap[id].Available == true)
+				IDmap[id].Available = false;
+			else
+				IDmap[id].Available = true;
+			break;
 		}
 		case 9:
 		{
-				  cout << "Modify current rooms: ";
-				  IDmap[id].roomList.Update_Room();
-				  break;
+			cout << "Current rooms : " << endl;
+			unordered_map<int, Room>::iterator i;
+			for (i = IDmap[id].roomList.Rooms.begin(); i != IDmap[id].roomList.Rooms.end(); i++)
+			{
+				cout << "Room number : " << i->second.Room_Number << endl;
+			}
+			IDmap[id].roomList.Update_Room();
+			break;
 		}
 		default:
 		{
-				   cout << "Choise not valid" << endl;
-				   break;
+			cout << "Choise not valid" << endl;
+			break;
 		}
 		}
 		system("cls");
@@ -625,6 +631,7 @@ void HotelList::Update_hotel()
 	}
 
 }
+
 
 void HotelList::reserve(int id)
 {
