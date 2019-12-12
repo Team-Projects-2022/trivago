@@ -33,7 +33,6 @@ struct Hotel
 	string Country;
 	string Location;
 	bool Free_Meals[2];
-	string comments;
 	int Number_Of_Stars;
 	int Number_Of_Rooms;
 	double Rate;
@@ -41,9 +40,7 @@ struct Hotel
 	bool Has_pool;
 	bool Available;
 	RoomList roomList;
-	vector<string> vcomments;
-	vector<int> vrating;
-
+	vector<pair<string,string>> vcomments;
 };
 
 class HotelList
@@ -58,10 +55,11 @@ public:
 	void Update_hotel();
 	void Delete_hotel();
 	void Display_hotels();
-	void Addcomments(int);
+	void Addcomments(int, string);
 	void rating(int);
-	void search(string, int); // in specific query gym ,pool, free_meals ..
-	void filter(string, int);
-	void searchhotel(string, int);
+	void search(string, int, string); // in specific query gym ,pool, free_meals ..
+	void filter(string, int, string);
+	void searchhotel(string, int, string);
 	void reserve(int);
+	void show_comments(int);
 };
