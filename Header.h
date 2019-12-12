@@ -178,7 +178,7 @@ string GetCountry()
 int Login(userInfo &U)
 {
 	cout << "Login :" << endl << endl;
-	cout << "1. Singn Up " << endl;
+	cout << "1. Sign Up " << endl;
 	cout << "2. Sign in" << endl<< endl;
 	int ch;
 	cout << "Enter your choice :";
