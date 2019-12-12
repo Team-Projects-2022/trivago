@@ -139,37 +139,39 @@ void HotelList::filter(string k, int a, string n) {
 
 						cout << "2.Location : " << IDmap[id].Location << endl;
 
+						cout << "3.Rating : " << IDmap[id].Rate << endl;
+
 						if (IDmap[id].Free_Meals[0] != false || IDmap[id].Free_Meals[1] != false)
 
-							cout << "3.Free meals : " << "has free meals" << endl;
+							cout << "4.Free meals : " << "has free meals" << endl;
 
 						else
 
-							cout << "3.Free meals : " << "has no free meals" << endl;
+							cout << "4.Free meals : " << "has no free meals" << endl;
 
 						if (IDmap[id].Has_pool == true)
 
-							cout << "4.Pool : " << "has Pool" << endl;
+							cout << "5.Pool : " << "has Pool" << endl;
 
 						else
 
-							cout << "4.Pool : " << "has no Pool" << endl;
+							cout << "5.Pool : " << "has no Pool" << endl;
 
 						if (IDmap[id].Has_Gym == true)
 
-							cout << "5.Gym : " << "has Gym" << endl;
+							cout << "6.Gym : " << "has Gym" << endl;
 
 						else
 
-							cout << "5.Gym : " << "has no Gym" << endl;
+							cout << "6.Gym : " << "has no Gym" << endl;
 
 						if (IDmap[id].Available == true)
 
-							cout << "6.Availability : " << "the hotel is available" << endl;
+							cout << "7.Availability : " << "the hotel is available" << endl;
 
 						else
 
-							cout << "6.availability : " << "the hotel is available" << endl;
+							cout << "7.availability : " << "the hotel is available" << endl;
 
 						show_comments(id);
 
@@ -521,7 +523,7 @@ void HotelList::Update_hotel()
 		else { cout << "7.Gym : Doesn't have gym " << endl; }
 		if (IDmap[id].Available) { cout << "9.Availability now : Available " << endl; }
 		else { cout << "8.Availability : Isn't available now" << endl; }
-		cout << "9.Rooms" << endl;
+		cout << "9.Rooms : "<< IDmap[id].Number_Of_Rooms << " rooms" << endl;
 		cout << endl;
 		cout << "What do you want to modify?" << endl;
 		int choice;
@@ -573,13 +575,29 @@ void HotelList::Update_hotel()
 		}
 		case 5:
 		{
-			bool x, y;
-			cout << "Modify Free meals : breakfast then dinner ";
+			char x, y;
+			cout << "Modify Free meals : " << endl;
+			cout << "Does it have breakfast ?(y/n) : ";
 			cin >> x;
-			IDmap[id].Free_Meals[0] = x;
-			cin >> y;
-			IDmap[id].Free_Meals[1] = y;
+			if (x == 'y')
+			{
+				IDmap[id].Free_Meals[0] = true;
+			}
+			else
+			{
+				IDmap[id].Free_Meals[0] = false;
+			}
 
+			cout << "Does it have dinner ?(y/n) : ";
+			cin >> y;
+			if (y == 'y')
+			{
+				IDmap[id].Free_Meals[1] = true;
+			}
+			else
+			{
+				IDmap[id].Free_Meals[1] = false;
+			}
 			break;
 		}
 		case 6:
@@ -611,14 +629,23 @@ void HotelList::Update_hotel()
 		}
 		case 9:
 		{
-			cout << "Current rooms : " << endl;
-			unordered_map<int, Room>::iterator i;
-			for (i = IDmap[id].roomList.Rooms.begin(); i != IDmap[id].roomList.Rooms.end(); i++)
+			if (IDmap[id].roomList.Rooms.size() == 0)
 			{
-				cout << "Room number : " << i->second.Room_Number << endl;
+				cout << "No rooms in this hotel" << endl;
+				system("pause");
+				break;
 			}
-			IDmap[id].roomList.Update_Room();
-			break;
+			else
+			{
+				cout << "Current rooms : " << endl;
+				unordered_map<int, Room>::iterator i;
+				for (i = IDmap[id].roomList.Rooms.begin(); i != IDmap[id].roomList.Rooms.end(); i++)
+				{
+					cout << "Room number : " << i->second.Room_Number << endl;
+				}
+				IDmap[id].roomList.Update_Room();
+				break;
+			}
 		}
 		default:
 		{
@@ -627,6 +654,20 @@ void HotelList::Update_hotel()
 		}
 		}
 		system("cls");
+
+		cout << "1.Hotel name : " << IDmap[id].Name << endl;
+		cout << "2.Stars : " << IDmap[id].Number_Of_Stars << endl;
+		cout << "3.Country : " << IDmap[id].Country << endl;
+		cout << "4.Location : " << IDmap[id].Location << endl;
+		cout << "5.Free meals : Breakfast : "; if (IDmap[id].Free_Meals[0]) cout << "YES, "; else cout << "NO, "; cout << "Dinner: "; if (IDmap[id].Free_Meals[1])cout << "YES," << endl; else cout << "NO " << endl;
+		if (IDmap[id].Has_pool) { cout << "7.Pool : Has pool " << endl; }
+		else { cout << "6.Pool : Doesn't have pool " << endl; }
+		if (IDmap[id].Has_Gym) { cout << "8.Gym : Has gym " << endl; }
+		else { cout << "7.Gym : Doesn't have gym " << endl; }
+		if (IDmap[id].Available) { cout << "9.Availability now : Available " << endl; }
+		else { cout << "8.Availability : Isn't available now" << endl; }
+		cout << endl;
+
 		char y;
 		cout << "Do you want to modify any thing else " << endl;
 		cin >> y;
@@ -801,7 +842,7 @@ void HotelList::search(string c, int a, string n) {
 				cin >> id;
 				if (IDmap.find(id) == IDmap.end()) {
 					cout << "ID Not Valid " << endl;
-					cout << "Please Re-";
+					cout << "Please Re-enter ID";
 					continue;
 				}
 
@@ -816,7 +857,7 @@ void HotelList::search(string c, int a, string n) {
 
 					cout << "5.Free meals : Breakfast : "; if (IDmap[id].Free_Meals[0])
 						cout << "YES, "; else cout << "NO, "; cout << "Dinner: "; if (IDmap[id].Free_Meals[1])
-						cout << "YES,"; else cout << "NO " << endl;
+						cout << "YES," << endl; else cout << "NO " << endl;
 
 					cout << "6.Rating : " << IDmap[id].Rate << endl;
 
