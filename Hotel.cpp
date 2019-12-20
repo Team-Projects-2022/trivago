@@ -62,6 +62,7 @@ void RoomList::Add_Room_Admin()
 		}
 
 	}
+	Rooms[roomtmp.Room_Number] = roomtmp;
 
 }
 
